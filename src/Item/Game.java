@@ -1,28 +1,25 @@
 package Item;
 
-public class Movie extends Item{
+public class Game extends Item{
     private String title;
     private String genre;
-    private int releaseYear;
-    private String director;
+    private String publisher;
     private String condition;
 
-    public Movie(
+    public Game(
             int itemID,
             String name,
             String description,
             double rentalChargePerDay,
             String title,
             String genre,
-            int releaseYear,
-            String director,
+            String publisher,
             String condition
     ) {
         super(itemID, name, description, rentalChargePerDay);
         this.title = title;
         this.genre = genre;
-        this.releaseYear = releaseYear;
-        this.director = director;
+        this.publisher = publisher;
         this.condition = condition;
     }
 
@@ -52,20 +49,12 @@ public class Movie extends Item{
         this.genre = genre;
     }
 
-    public int getReleaseYear() {
-        return releaseYear;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public String getCondition() {

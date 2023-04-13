@@ -18,10 +18,11 @@ public class Customer extends User{
             String name,
             String email,
             String password,
+            String tipe,
             String phoneNumber,
             String address
     ) {
-        super(userID, name, email, password);
+        super(userID, name, email, password, tipe);
         this.phoneNumber = phoneNumber;
         this.address = address;
         rentedItem = new ArrayList<>();

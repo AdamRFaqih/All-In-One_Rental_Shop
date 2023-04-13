@@ -15,10 +15,11 @@ public class Owner extends User{
             String name,
             String email,
             String password,
+            String tipe,
             String shopName,
             String location
     ) {
-        super(userID, name, email, password);
+        super(userID, name, email, password, tipe);
         this.shopName = shopName;
         this.location = location;
         itemRented = new ArrayList<>();
