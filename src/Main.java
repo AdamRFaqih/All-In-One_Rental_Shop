@@ -1,3 +1,4 @@
+import Item.Mobil;
 import Menu.CustomerMenu;
 import User.*;
 
@@ -9,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String username, password;
-        User userSaatIni;
         boolean validate;
         Customer customer = new Customer(
                 1,
@@ -33,6 +33,31 @@ public class Main {
         pengguna.add(customer);
         pengguna.add(owner);
 
+        Mobil avanza = new Mobil(1,
+                "Mobil",
+                "Ini Mobil",
+                500000,
+                "Toyota",
+                "Avanza",
+                2021,
+                "Bensin"
+        );
+        Mobil sf90 = new Mobil(2,
+                "Mobil",
+                "Ini Mobil",
+                500000,
+                "Ferrari",
+                "SF90",
+                2021,
+                "Bensin"
+        );
+        List<Mobil> mobilList = new ArrayList<>();
+        mobilList.add(avanza);
+        mobilList.add(sf90);
+
+
+
+
         System.out.print("Masukan Username: ");
         username = scanner.nextLine();
         System.out.print("Masukan Password: ");
@@ -48,6 +73,7 @@ public class Main {
         for (User user : pengguna){
             if (user.getName().equals(username) && user.getTipe().equals("Customer")){
                 CustomerMenu customerMenu = new CustomerMenu((Customer) user);
+                customerMenu.menu();
                 return;
             }
         }
