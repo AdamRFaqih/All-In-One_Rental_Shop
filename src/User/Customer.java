@@ -10,8 +10,10 @@ public class Customer extends User{
     private String phoneNumber;
     private String address;
     private List<Item> rentedItem;
+    private List<Item> cart;
     private String loyaltyType;
     private int numberBorrow;
+    private long wallet;
 
     public Customer(
             int userID,
@@ -55,9 +57,24 @@ public class Customer extends User{
     public void logout() {
         System.out.println("Customer Logout");
     }
-
-    public void rentItem(Item item){
-        rentedItem.add(item);
+    
+    public void addtoCart(Item item){
+        cart.add(item);
+    }
+    
+    public void rentCartItem(){
+        long bill = 0;
+        for (Item item : this.cart){
+            bill += item.getRentalCharge();
+        }
+        
+        //du payment function here
+        
+        for (Item item : this.cart){
+            rentedItem.add(item);
+            item.setAvailbility();
+            
+        }
     }
 
     public void returnItem(Item item){
