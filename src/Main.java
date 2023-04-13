@@ -1,5 +1,6 @@
 import Item.Mobil;
 import Menu.CustomerMenu;
+import Menu.OwnerMenu;
 import User.*;
 
 import java.util.ArrayList;
@@ -32,51 +33,32 @@ public class Main {
         List<User> pengguna = new ArrayList<>();
         pengguna.add(customer);
         pengguna.add(owner);
+           
+        String endRequest;
+        do{ //main loop
+            do{
+                System.out.print("Masukan Username: ");
+                username = scanner.nextLine();
+                System.out.print("Masukan Password: ");
+                password = scanner.nextLine();
+                validate = validatePassword(username,password,pengguna);
+            }while (!validate);
 
-        Mobil avanza = new Mobil(1,
-                "Mobil",
-                "Ini Mobil",
-                500000,
-                "Toyota",
-                "Avanza",
-                2021,
-                "Bensin"
-        );
-        Mobil sf90 = new Mobil(2,
-                "Mobil",
-                "Ini Mobil",
-                500000,
-                "Ferrari",
-                "SF90",
-                2021,
-                "Bensin"
-        );
-        List<Mobil> mobilList = new ArrayList<>();
-        mobilList.add(avanza);
-        mobilList.add(sf90);
-
-
-
-
-        System.out.print("Masukan Username: ");
-        username = scanner.nextLine();
-        System.out.print("Masukan Password: ");
-        password = scanner.nextLine();
-        validate = validatePassword(username,password,pengguna);
-        while (!validate){
-            System.out.print("Masukan Username: ");
-            username = scanner.nextLine();
-            System.out.print("Masukan Password: ");
-            password = scanner.nextLine();
-            validate = validatePassword(username,password,pengguna);
-        }
-        for (User user : pengguna){
-            if (user.getName().equals(username) && user.getTipe().equals("Customer")){
-                CustomerMenu customerMenu = new CustomerMenu((Customer) user);
-                customerMenu.menu();
-                return;
+            for (User user : pengguna){
+                if (user.getName().equals(username) && user.getTipe().equals("Customer")){
+                    CustomerMenu customerMenu = new CustomerMenu((Customer) user);
+                    customerMenu.menu();
+                    break;
+                }
+                if (user.getName().equals(username) && user.getTipe().equals("Owner")){
+                    OwnerMenu ownerMenu = new OwnerMenu((Owner) user);
+                    ownerMenu.menu();
+                    break;
+                }
             }
-        }
+            System.out.print("Anda ingin keluar atau Ganti akun:(q/s) ");
+            endRequest = scanner.nextLine();
+        } while (endRequest.equals("s"));
     }
 
     public static boolean validatePassword(String username, String password, List<User> pengguna){
