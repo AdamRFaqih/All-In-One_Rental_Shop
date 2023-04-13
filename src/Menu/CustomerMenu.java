@@ -4,13 +4,13 @@ import User.Customer;
 
 import java.util.Scanner;
 
-public class CustomerMenu extends Customer {
+public class CustomerMenu {
+    private Customer user;
 
-
-    public CustomerMenu(int userID, String name, String email, String password, String tipe, String phoneNumber, String address) {
-        super(userID, name, email, password, tipe, phoneNumber, address);
-        this.login();
-        System.out.println("Selamat datang, " + this.getName());
+    public CustomerMenu(Customer user) {
+        this.user = user;
+        user.login();
+        System.out.println("Selamat datang, " + user.getName());
     }
 
     public void menu(){
@@ -24,15 +24,13 @@ public class CustomerMenu extends Customer {
             pilihan = scanner.nextInt();
             switch (pilihan){
                 case 1:
-                    super.viewProfile();
+                    user.viewProfile();
                 case 2:
-                    super.addtoCart(null);
+                    user.rentItem(null);
                 case 3:
-                    super.returnItem(null);
+                    user.returnItem(null);
                 case 4:
-                    super.rentCartItem();
-                case 5:
-                    super.viewRentedItem();
+                    user.viewRentedItem();
             }
         }
     }
