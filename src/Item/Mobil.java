@@ -7,7 +7,6 @@ public class Mobil extends Item implements Asuransi{
     private String bahanBakar;
 
     public Mobil(
-            int itemID,
             String name,
             String description,
             double rentalChargePerDay,
@@ -16,7 +15,7 @@ public class Mobil extends Item implements Asuransi{
             int tahunKeluaran,
             String bahanBakar
     ) {
-        super(itemID, name, description, rentalChargePerDay);
+        super(name, description, rentalChargePerDay);
         this.pabrikan = pabrikan;
         this.model = model;
         this.tahunKeluaran = tahunKeluaran;

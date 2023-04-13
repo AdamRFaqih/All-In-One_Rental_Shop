@@ -7,7 +7,6 @@ public class Game extends Item{
     private String condition;
 
     public Game(
-            int itemID,
             String name,
             String description,
             double rentalChargePerDay,
@@ -16,7 +15,7 @@ public class Game extends Item{
             String publisher,
             String condition
     ) {
-        super(itemID, name, description, rentalChargePerDay);
+        super(name, description, rentalChargePerDay);
         this.title = title;
         this.genre = genre;
         this.publisher = publisher;

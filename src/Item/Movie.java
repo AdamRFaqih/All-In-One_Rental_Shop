@@ -8,7 +8,6 @@ public class Movie extends Item{
     private String condition;
 
     public Movie(
-            int itemID,
             String name,
             String description,
             double rentalChargePerDay,
@@ -18,7 +17,7 @@ public class Movie extends Item{
             String director,
             String condition
     ) {
-        super(itemID, name, description, rentalChargePerDay);
+        super(name, description, rentalChargePerDay);
         this.title = title;
         this.genre = genre;
         this.releaseYear = releaseYear;

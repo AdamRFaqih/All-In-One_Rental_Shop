@@ -1,14 +1,16 @@
 package Item;
 
 public abstract class Item {
+    static private int itemCount;
+    
     private int itemID;
     private String name;
     private String description;
     private double rentalChargePerDay;
     private boolean availbility;
 
-    public Item(int itemID, String name, String description, double rentalChargePerDay) {
-        this.itemID = itemID;
+    public Item(String name, String description, double rentalChargePerDay) {
+        this.itemID = itemCount++;
         this.name = name;
         this.description = description;
         this.rentalChargePerDay = rentalChargePerDay;

@@ -6,7 +6,6 @@ public class Motor extends Item implements Asuransi{
     private int tahunKeluar;
 
     public Motor(
-            int itemID,
             String name,
             String description,
             double rentalChargePerDay,
@@ -14,7 +13,7 @@ public class Motor extends Item implements Asuransi{
             String model,
             int tahunKeluar
     ) {
-        super(itemID, name, description, rentalChargePerDay);
+        super(name, description, rentalChargePerDay);
         this.pabrikan = pabrikan;
         this.model = model;
         this.tahunKeluar = tahunKeluar;
