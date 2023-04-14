@@ -12,7 +12,9 @@ public class Customer extends User{
     private List<Item> rentedItem;
     private String loyaltyType;
     private int numberBorrow;
-
+    
+    private long wallet;
+    
     public Customer(
             int userID,
             String name,
@@ -28,6 +30,7 @@ public class Customer extends User{
         rentedItem = new ArrayList<>();
         loyaltyType = "New Member";
         numberBorrow = 0;
+        wallet = 0;
     }
 
     public String getPhoneNumber() {
@@ -57,6 +60,7 @@ public class Customer extends User{
     }
 
     public void rentItem(Item item){
+        this.wallet -= item.getRentalCharge();
         rentedItem.add(item);
     }
 
@@ -69,10 +73,33 @@ public class Customer extends User{
         }
     }
 
+    public List<Item> getRentedItem() {
+        return rentedItem;
+    }
+
     public void viewRentedItem(){
         System.out.println("Rented Item: ");
         for (Item item : rentedItem){
             System.out.println(item.getName());
         }
+    }
+    
+    public void viewRentedItem(int format){
+        System.out.println("Item List in Shop: ");
+        int index = 1;
+        for (Item item : this.rentedItem){
+            if (format == 1){
+                System.out.print((index++) + ". ");
+            }
+            System.out.println(item.getName());
+        }
+    }
+    
+    public void topUp(long amount){
+        this.wallet += amount;
+    }
+
+    public long getWallet() {
+        return wallet;
     }
 }

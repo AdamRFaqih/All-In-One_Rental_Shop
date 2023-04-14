@@ -10,6 +10,10 @@ public class Owner extends User{
     private String location;
     private List<Item> itemRented;
 
+    public List<Item> getItemRented() {
+        return itemRented;
+    }
+
     public Owner(
             int userID,
             String name,
@@ -65,4 +69,16 @@ public class Owner extends User{
             System.out.println(item.getName());
         }
     }
+    
+    public void viewItemList(int format){
+        System.out.println("Item List in Shop: ");
+        int index = 1;
+        for (Item item : itemRented){
+            if (format == 1){
+                System.out.print((index++) + ". ");
+            }
+            System.out.println(item.getName());
+        }
+    }
+    
 }

@@ -46,7 +46,7 @@ public class Main {
 
             for (User user : pengguna){
                 if (user.getName().equals(username) && user.getTipe().equals("Customer")){
-                    CustomerMenu customerMenu = new CustomerMenu((Customer) user);
+                    CustomerMenu customerMenu = new CustomerMenu((Customer) user, owner);
                     customerMenu.menu();
                     break;
                 }
