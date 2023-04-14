@@ -78,24 +78,39 @@ public class OwnerMenu {
         int pilihan = scanner.nextInt();
         switch (pilihan){
             case 1:
+                System.out.println("Masukkan nama game");
                 String name1 = scanner.nextLine();
+                System.out.println("deskripsikan game");
                 String description1 = scanner.nextLine();
+                System.out.println("biaya rental");
                 double rentalChargePerDay1 = scanner.nextDouble();
+                System.out.println("Masukkan title game");
                 String title1 = scanner.nextLine();
+                System.out.println("Masukkan genre game");
                 String genre1 = scanner.nextLine();
+                System.out.println("Masukkan publisher game");
                 String publisher1 = scanner.nextLine();
+                System.out.println("Masukkan kondisi/isi game");
                 String condition1 = scanner.nextLine();
                 
                 Game newGame = new Game(name1, description1, rentalChargePerDay1, title1, genre1, publisher1, condition1);
                 return newGame;
             case 2:
+                System.out.println("Masukkan nama film");
                 String name2 = scanner.nextLine();
+                System.out.println("Masukkan deskripsi film");
                 String description2 = scanner.nextLine();
+                System.out.println("Masukkan biaya rental");
                 double rentalChargePerDay2 = scanner.nextDouble();
+                System.out.println("Masukkan title film");
                 String title2 = scanner.nextLine();
+                System.out.println("Masukkan genre film");
                 String genre2 = scanner.nextLine();
+                System.out.println("Masukkan tahun rilis film");
                 int releaseYear2 = scanner.nextInt();
+                System.out.println("Masukkan sutradara film");
                 String director2 = scanner.nextLine();
+                System.out.println("Masukkan kondisi/kualitas film");
                 String condition2 = scanner.nextLine();
                 
                 Movie newMovie = new Movie(name2, description2, rentalChargePerDay2, title2, genre2, releaseYear2, director2, condition2);
@@ -109,8 +124,7 @@ public class OwnerMenu {
                 
                 System.out.print("deskripsi :");
                 String description3 = scanner.nextLine();
-                
-                
+
                 System.out.println("biaya rental ");
                 double rentalChargePerDay3 = scanner.nextDouble();
                 scanner.nextLine();
@@ -137,11 +151,17 @@ public class OwnerMenu {
                 bahanBakar3
                 );
             case 4:
+                System.out.println("Masukkan nama motor");
                 String name4 =scanner.nextLine();
+                System.out.println("Deskripsi motor");
                 String description4 =scanner.nextLine();
+                System.out.println("biaya rental");
                 double rentalChargePerDay4 =scanner.nextDouble();
+                System.out.println("pabrikan motor");
                 String pabrikan4 = scanner.nextLine();
+                System.out.println("model motor");
                 String model4 = scanner.nextLine();
+                System.out.println("tahun rilis motor");
                 int tahunKeluar4 = scanner.nextInt();
                       
                 return new Motor(
