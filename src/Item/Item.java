@@ -9,6 +9,10 @@ public abstract class Item {
     private double rentalChargePerDay;
     private boolean availbility;
 
+    public boolean isAvailbility() {
+        return availbility;
+    }
+
     public Item(String name, String description, double rentalChargePerDay) {
         this.itemID = itemCount++;
         this.name = name;

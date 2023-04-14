@@ -41,7 +41,15 @@ public class OwnerMenu {
                     owner.addItem(newItem);
                     break;
                 case 3:
-                    owner.removeItem(null);
+                    System.out.println("Silahkan Pilih item yang ingin dihapus");
+                    owner.viewItemList();
+                    int indexItemToRemove = scanner.nextInt();
+                    Item itemToRemove = owner.getItemRented().get(indexItemToRemove);
+                    if (itemToRemove.isAvailbility()){
+                        System.out.println("Barang sedang digunakan, tidak bisa dihapus");
+                        break;
+                    }
+                    owner.removeItem(itemToRemove);
                     break;
                 case 4:
                     owner.viewItemList();

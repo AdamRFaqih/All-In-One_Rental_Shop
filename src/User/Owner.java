@@ -10,6 +10,10 @@ public class Owner extends User{
     private String location;
     private List<Item> itemRented;
 
+    public List<Item> getItemRented() {
+        return itemRented;
+    }
+
     public Owner(
             int userID,
             String name,
