@@ -9,38 +9,62 @@ public abstract class Item {
     private double rentalChargePerDay;
     private boolean availbility;
 
-    public boolean isAvailbility() {
-        return availbility;
+    public Item() {
     }
 
-    public Item(String name, String description, double rentalChargePerDay) {
-        this.itemID = itemCount++;
+    public Item(int itemID, String name, String description, double rentalChargePerDay, boolean availbility) {
+        this.itemID = itemID;
         this.name = name;
         this.description = description;
         this.rentalChargePerDay = rentalChargePerDay;
-        availbility = true;
+        this.availbility = availbility;
+    }
+
+    public static int getItemCount() {
+        return itemCount;
+    }
+
+    public static void setItemCount(int itemCount) {
+        Item.itemCount = itemCount;
     }
 
     public int getItemID() {
         return itemID;
     }
 
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setAvailbility() {
-        if (availbility){
-            availbility = false;
-        }else {
-            availbility = true;
-        }
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public abstract double getRentalCharge();
-    public abstract void showItemDetail();
+    public double getRentalChargePerDay() {
+        return rentalChargePerDay;
+    }
+
+    public void setRentalChargePerDay(double rentalChargePerDay) {
+        this.rentalChargePerDay = rentalChargePerDay;
+    }
+
+    public boolean isAvailbility() {
+        return availbility;
+    }
+
+    public void setAvailbility(boolean availbility) {
+        this.availbility = availbility;
+    }
 }

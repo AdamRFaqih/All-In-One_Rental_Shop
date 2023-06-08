@@ -13,8 +13,24 @@ public class Customer extends User{
     private String loyaltyType;
     private int numberBorrow;
     
-    private long wallet;
-    
+    private double wallet;
+
+    public Customer() {
+    }
+
+    public Customer(String phoneNumber, String address, List<Item> rentedItem, String loyaltyType, int numberBorrow, double wallet) {
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.rentedItem = rentedItem;
+        this.loyaltyType = loyaltyType;
+        this.numberBorrow = numberBorrow;
+        this.wallet = wallet;
+    }
+
+    public Customer(int userID, String name, String email, String password, String tipe) {
+        super(userID, name, email, password, tipe);
+    }
+
     public Customer(
             int userID,
             String name,
@@ -22,15 +38,18 @@ public class Customer extends User{
             String password,
             String tipe,
             String phoneNumber,
-            String address
-    ) {
+            String address,
+            List<Item> rentedItem,
+            String loyaltyType,
+            int numberBorrow,
+            double wallet) {
         super(userID, name, email, password, tipe);
         this.phoneNumber = phoneNumber;
         this.address = address;
-        rentedItem = new ArrayList<>();
-        loyaltyType = "New Member";
-        numberBorrow = 0;
-        wallet = 0;
+        this.rentedItem = rentedItem;
+        this.loyaltyType = loyaltyType;
+        this.numberBorrow = numberBorrow;
+        this.wallet = wallet;
     }
 
     public String getPhoneNumber() {
@@ -49,57 +68,35 @@ public class Customer extends User{
         this.address = address;
     }
 
-    @Override
-    public void login() {
-        System.out.println("Customer Login");
-    }
-
-    @Override
-    public void logout() {
-        System.out.println("Customer Logout");
-    }
-
-    public void rentItem(Item item){
-        this.wallet -= item.getRentalCharge();
-        rentedItem.add(item);
-    }
-
-    public void returnItem(Item item){
-        rentedItem.remove(item);
-        numberBorrow++;
-        if (numberBorrow > 10){
-            System.out.println("Loyalty member upgraded to Veteran");
-            loyaltyType = "Veteran";
-        }
-    }
-
     public List<Item> getRentedItem() {
         return rentedItem;
     }
 
-    public void viewRentedItem(){
-        System.out.println("Rented Item: ");
-        for (Item item : rentedItem){
-            System.out.println(item.getName());
-        }
-    }
-    
-    public void viewRentedItem(int format){
-        System.out.println("Item List in Shop: ");
-        int index = 1;
-        for (Item item : this.rentedItem){
-            if (format == 1){
-                System.out.print((index++) + ". ");
-            }
-            System.out.println(item.getName());
-        }
-    }
-    
-    public void topUp(long amount){
-        this.wallet += amount;
+    public void setRentedItem(List<Item> rentedItem) {
+        this.rentedItem = rentedItem;
     }
 
-    public long getWallet() {
+    public String getLoyaltyType() {
+        return loyaltyType;
+    }
+
+    public void setLoyaltyType(String loyaltyType) {
+        this.loyaltyType = loyaltyType;
+    }
+
+    public int getNumberBorrow() {
+        return numberBorrow;
+    }
+
+    public void setNumberBorrow(int numberBorrow) {
+        this.numberBorrow = numberBorrow;
+    }
+
+    public double getWallet() {
         return wallet;
+    }
+
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
     }
 }

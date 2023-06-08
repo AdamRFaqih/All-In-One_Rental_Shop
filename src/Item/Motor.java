@@ -1,60 +1,28 @@
 package Item;
 
-public class Motor extends Item implements Asuransi{
+public class Motor extends Item{
     private String pabrikan;
     private String model;
     private int tahunKeluar;
 
-    public Motor(
-            String name,
-            String description,
-            double rentalChargePerDay,
-            String pabrikan,
-            String model,
-            int tahunKeluar
-    ) {
-        super(name, description, rentalChargePerDay);
+
+    public Motor() {
+    }
+
+    public Motor(int itemID, String name, String description, double rentalChargePerDay, boolean availbility) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
+    }
+
+    public Motor(String pabrikan, String model, int tahunKeluar) {
         this.pabrikan = pabrikan;
         this.model = model;
         this.tahunKeluar = tahunKeluar;
     }
 
-    @Override
-    public double getRentalCharge() {
-        return 0;
-    }
-
-    @Override
-    public void showItemDetail() {
-
-    }
-
-    @Override
-    public double totalAsuransi() {
-        return 0;
-    }
-
-    public String getPabrikan() {
-        return pabrikan;
-    }
-
-    public void setPabrikan(String pabrikan) {
+    public Motor(int itemID, String name, String description, double rentalChargePerDay, boolean availbility, String pabrikan, String model, int tahunKeluar) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
         this.pabrikan = pabrikan;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
         this.model = model;
-    }
-
-    public int getTahunKeluar() {
-        return tahunKeluar;
-    }
-
-    public void setTahunKeluar(int tahunKeluar) {
         this.tahunKeluar = tahunKeluar;
     }
 }

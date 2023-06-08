@@ -7,17 +7,14 @@ public class Movie extends Item{
     private String director;
     private String condition;
 
-    public Movie(
-            String name,
-            String description,
-            double rentalChargePerDay,
-            String title,
-            String genre,
-            int releaseYear,
-            String director,
-            String condition
-    ) {
-        super(name, description, rentalChargePerDay);
+    public Movie() {
+    }
+
+    public Movie(int itemID, String name, String description, double rentalChargePerDay, boolean availbility) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
+    }
+
+    public Movie(String title, String genre, int releaseYear, String director, String condition) {
         this.title = title;
         this.genre = genre;
         this.releaseYear = releaseYear;
@@ -25,14 +22,13 @@ public class Movie extends Item{
         this.condition = condition;
     }
 
-    @Override
-    public double getRentalCharge() {
-        return 0;
-    }
-
-    @Override
-    public void showItemDetail() {
-
+    public Movie(int itemID, String name, String description, double rentalChargePerDay, boolean availbility, String title, String genre, int releaseYear, String director, String condition) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
+        this.title = title;
+        this.genre = genre;
+        this.releaseYear = releaseYear;
+        this.director = director;
+        this.condition = condition;
     }
 
     public String getTitle() {
