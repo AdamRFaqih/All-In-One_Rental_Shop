@@ -5,28 +5,29 @@ import Item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Owner extends User{
+public class Owner extends User {
     private String shopName;
     private String location;
     private List<Item> itemRented;
 
-    public List<Item> getItemRented() {
-        return itemRented;
+    public Owner() {
     }
 
-    public Owner(
-            int userID,
-            String name,
-            String email,
-            String password,
-            String tipe,
-            String shopName,
-            String location
-    ) {
+    public Owner(int userID, String name, String email, String password, String tipe) {
+        super(userID, name, email, password, tipe);
+    }
+
+    public Owner(String shopName, String location, List<Item> itemRented) {
+        this.shopName = shopName;
+        this.location = location;
+        this.itemRented = itemRented;
+    }
+
+    public Owner(int userID, String name, String email, String password, String tipe, String shopName, String location, List<Item> itemRented) {
         super(userID, name, email, password, tipe);
         this.shopName = shopName;
         this.location = location;
-        itemRented = new ArrayList<>();
+        this.itemRented = itemRented;
     }
 
     public String getShopName() {
@@ -45,40 +46,11 @@ public class Owner extends User{
         this.location = location;
     }
 
-    @Override
-    public void login() {
-        System.out.println("Owner Login");
+    public List<Item> getItemRented() {
+        return itemRented;
     }
 
-    @Override
-    public void logout() {
-        System.out.println("Owner Logout");
+    public void setItemRented(List<Item> itemRented) {
+        this.itemRented = itemRented;
     }
-
-    public void addItem(Item item){
-        itemRented.add(item);
-    }
-
-    public void removeItem(Item item){
-        itemRented.remove(item);
-    }
-
-    public void viewItemList(){
-        System.out.println("Item List in Shop: ");
-        for (Item item : itemRented){
-            System.out.println(item.getName());
-        }
-    }
-    
-    public void viewItemList(int format){
-        System.out.println("Item List in Shop: ");
-        int index = 1;
-        for (Item item : itemRented){
-            if (format == 1){
-                System.out.print((index++) + ". ");
-            }
-            System.out.println(item.getName());
-        }
-    }
-    
 }

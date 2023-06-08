@@ -6,30 +6,26 @@ public class Game extends Item{
     private String publisher;
     private String condition;
 
-    public Game(
-            String name,
-            String description,
-            double rentalChargePerDay,
-            String title,
-            String genre,
-            String publisher,
-            String condition
-    ) {
-        super(name, description, rentalChargePerDay);
+    public Game() {
+    }
+
+    public Game(int itemID, String name, String description, double rentalChargePerDay, boolean availbility) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
+    }
+
+    public Game(String title, String genre, String publisher, String condition) {
         this.title = title;
         this.genre = genre;
         this.publisher = publisher;
         this.condition = condition;
     }
 
-    @Override
-    public double getRentalCharge() {
-        return 0;
-    }
-
-    @Override
-    public void showItemDetail() {
-
+    public Game(int itemID, String name, String description, double rentalChargePerDay, boolean availbility, String title, String genre, String publisher, String condition) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
+        this.title = title;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.condition = condition;
     }
 
     public String getTitle() {

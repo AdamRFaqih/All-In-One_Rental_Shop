@@ -1,40 +1,31 @@
 package Item;
 
-public class Mobil extends Item implements Asuransi{
+public class Mobil extends Item{
     private String pabrikan;
     private String model;
     private int tahunKeluaran;
     private String bahanBakar;
 
-    public Mobil(
-            String name,
-            String description,
-            double rentalChargePerDay,
-            String pabrikan,
-            String model,
-            int tahunKeluaran,
-            String bahanBakar
-    ) {
-        super(name, description, rentalChargePerDay);
+    public Mobil() {
+    }
+
+    public Mobil(int itemID, String name, String description, double rentalChargePerDay, boolean availbility) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
+    }
+
+    public Mobil(String pabrikan, String model, int tahunKeluaran, String bahanBakar) {
         this.pabrikan = pabrikan;
         this.model = model;
         this.tahunKeluaran = tahunKeluaran;
         this.bahanBakar = bahanBakar;
     }
 
-    @Override
-    public double totalAsuransi() {
-        return 0;
-    }
-
-    @Override
-    public double getRentalCharge() {
-        return 0;
-    }
-
-    @Override
-    public void showItemDetail() {
-
+    public Mobil(int itemID, String name, String description, double rentalChargePerDay, boolean availbility, String pabrikan, String model, int tahunKeluaran, String bahanBakar) {
+        super(itemID, name, description, rentalChargePerDay, availbility);
+        this.pabrikan = pabrikan;
+        this.model = model;
+        this.tahunKeluaran = tahunKeluaran;
+        this.bahanBakar = bahanBakar;
     }
 
     public String getPabrikan() {

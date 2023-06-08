@@ -1,74 +1,23 @@
-import Item.Mobil;
-import Menu.CustomerMenu;
-import Menu.OwnerMenu;
-import User.*;
+import Database.CustomerDAO;
+import Item.Game;
+import Item.Item;
+import User.Customer;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String username, password;
-        boolean validate;
-        Customer customer = new Customer(
-                1,
-                "Adam",
-                "adamrafif@gmail.com",
-                "password",
-                "Customer",
-                "08129293123",
-                "Sukabirus"
-        );
-        Owner owner = new Owner(
-                1,
-                "Rahma",
-                "raimess@gmail.com",
-                "password",
-                "Owner",
-                "Maju Jawa",
-                "Semarang"
-        );
-        List<User> pengguna = new ArrayList<>();
-        pengguna.add(customer);
-        pengguna.add(owner);
-           
-        String endRequest;
-        do{ //main loop
-            do{
-                System.out.print("Masukan Username: ");
-                username = scanner.nextLine();
-                System.out.print("Masukan Password: ");
-                password = scanner.nextLine();
-                validate = validatePassword(username,password,pengguna);
-            }while (!validate);
+    public static void main(String[] args) throws SQLException {
+        Game gow = new Game(123,"Game", "ini game",30.0,true,"God of War","RPG","Sony","good");
+        Game gta = new Game(124,"Game", "ini game",30.0,true,"GTA","RPG","Rockstar","good");
+        List<Item> rented = new ArrayList<>();
+        rented.add(gow);
+        rented.add(gta);
+        Customer customer = new Customer(0,"adam","adam@gmail.com","123","customer","08129908482","sukabirus",rented,"Junior",0,0);
+        CustomerDAO customerDAO = new CustomerDAO();
+        customerDAO.createData(customer);
 
-            for (User user : pengguna){
-                if (user.getName().equals(username) && user.getTipe().equals("Customer")){
-                    CustomerMenu customerMenu = new CustomerMenu((Customer) user, owner);
-                    customerMenu.menu();
-                    break;
-                }
-                if (user.getName().equals(username) && user.getTipe().equals("Owner")){
-                    OwnerMenu ownerMenu = new OwnerMenu((Owner) user);
-                    ownerMenu.menu();
-                    break;
-                }
-            }
-            System.out.print("Anda ingin keluar atau Ganti akun:(q/s) ");
-            endRequest = scanner.nextLine();
-        } while (endRequest.equals("s"));
-    }
 
-    public static boolean validatePassword(String username, String password, List<User> pengguna){
-        for (User user : pengguna){
-            if(user.getName().equals(username) && user.getPassword().equals(password)){
-                System.out.println("Selamat datang, " + user.getName());
-                return true;
-            }
-        }
-        System.out.println("Username atau Password salah");
-        return false;
     }
 }

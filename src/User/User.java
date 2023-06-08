@@ -2,25 +2,20 @@ package User;
 
 public abstract class User {
     private int userID;
-    private String name;
+    private String userName;
     private String email;
-    private String password;
+    private transient String password;
     private String tipe;
 
-    public User(int userID, String name, String email, String password, String tipe) {
+    public User() {
+    }
+
+    public User(int userID, String userName, String email, String password, String tipe) {
         this.userID = userID;
-        this.name = name;
+        this.userName = userName;
         this.email = email;
         this.password = password;
         this.tipe = tipe;
-    }
-
-    public abstract void login();
-    public abstract void logout();
-    public void viewProfile(){
-        System.out.println("User ID: " + userID);
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
     }
 
     public int getUserID() {
@@ -31,12 +26,12 @@ public abstract class User {
         this.userID = userID;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
