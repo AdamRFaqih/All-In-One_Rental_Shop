@@ -3,6 +3,7 @@ package Database;
 import Item.Item;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class ItemDAO implements InterfaceDAO<Item> {
 
     @Override
     public void createData(Item object) throws SQLException {
-
+        throw new RuntimeException("Method Not Used");
     }
 
     @Override
@@ -36,11 +37,15 @@ public class ItemDAO implements InterfaceDAO<Item> {
 
     @Override
     public void updateData(Item object) throws SQLException {
-
+        throw new RuntimeException("Method Not Used");
     }
 
     @Override
     public void deleteData(Item object) throws SQLException {
-
+        String deleteQuery = "DELETE FROM items WHERE id = ?";
+        PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
+        deleteStatement.setInt(1, object.getItemID());
+        deleteStatement.executeUpdate();
+        connection.commit();
     }
 }

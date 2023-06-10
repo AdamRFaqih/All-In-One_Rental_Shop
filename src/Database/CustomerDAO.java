@@ -66,6 +66,8 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
     @Override
     public List<Customer> readData() throws SQLException {
         List<Customer> customers = new ArrayList<>();
+        ItemDAO itemDAO = new ItemDAO();
+        List<Item> items = itemDAO.readData();
         String queryStatement = "SELECT * FROM users NATURAL JOIN customers";
         PreparedStatement statement = connection.prepareStatement(queryStatement);
         ResultSet res = statement.executeQuery();
@@ -74,13 +76,57 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
             String name = res.getString("username");
             String password = res.getString("password");
             String email = res.getString("email");
-
+            String userType = res.getString("user_type");
+            String phone = res.getString("phonenumber");
+            String address = res.getString("address");
+            String loyalty = res.getString("loyaltytype");
+            int numberBorrow = res.getInt("numberborrow");
+            Array rented = res.getArray("rented_item");
+            double balance = res.getDouble("balance");
+            Integer[] rent = (Integer[]) rented.getArray();
+            List<Item> rentedItem = new ArrayList<>();
+            int j = 0;
+            for (int i = 0; i < items.size(); i++){
+                if (items.get(i).getItemID() == rent[j]){
+                    rentedItem.add(items.get(i));
+                    j++;
+                }
+            }
+            Customer customer = new Customer(id, name, email, password, userType, phone, address, rentedItem, loyalty, numberBorrow,balance);
+            customers.add(customer);
         }
         return customers;
     }
 
     @Override
-    public void updateData(Customer object) {
+    public void updateData(Customer object) throws SQLException {
+        String updateUsers = "UPDATE users SET username = ?, password = ?, email = ?, user_type = ? WHERE id = ?";
+        String updateCustomer = "UPDATE customers SET phonenumber = ?, loyaltytype = ?, numberborrow = ?, balance = ?, rented_item = ? WHERE user_id = ?";
+        PreparedStatement userStatement = connection.prepareStatement(updateUsers);
+        PreparedStatement customerStatement = connection.prepareStatement(updateCustomer);
+
+        userStatement.setString(1, object.getUserName());
+        userStatement.setString(2, object.getPassword());
+        userStatement.setString(3, object.getEmail());
+        userStatement.setString(4, object.getTipe());
+        userStatement.setInt(5, object.getUserID());
+
+        customerStatement.setString(1, object.getPhoneNumber());
+        customerStatement.setString(2, object.getLoyaltyType());
+        customerStatement.setInt(3, object.getNumberBorrow());
+        customerStatement.setDouble(4, object.getWallet());
+        List<Integer> listIdItem = new ArrayList<>();
+        for (Item item: object.getRentedItem()) {
+            listIdItem.add(item.getItemID());
+        }
+        Array item = connection.createArrayOf("integer", listIdItem.toArray(new Integer[0]));
+        customerStatement.setArray(5, item);
+        customerStatement.setInt(6, object.getUserID());
+
+        userStatement.executeUpdate();
+        userStatement.executeUpdate();
+
+        connection.commit();
 
     }
 
