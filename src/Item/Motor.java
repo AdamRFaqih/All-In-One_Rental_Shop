@@ -25,4 +25,28 @@ public class Motor extends Item{
         this.model = model;
         this.tahunKeluar = tahunKeluar;
     }
+
+    public String getPabrikan() {
+        return pabrikan;
+    }
+
+    public void setPabrikan(String pabrikan) {
+        this.pabrikan = pabrikan;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getTahunKeluar() {
+        return tahunKeluar;
+    }
+
+    public void setTahunKeluar(int tahunKeluar) {
+        this.tahunKeluar = tahunKeluar;
+    }
 }
