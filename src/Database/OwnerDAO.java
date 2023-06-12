@@ -50,7 +50,7 @@ public class OwnerDAO implements InterfaceDAO<Owner> {
 
             connection.commit();
         } else {
-            throw new SQLException("Failed to create a user account.");
+            throw new SQLException("Failed to create a owner account.");
         }
     }
 
@@ -87,12 +87,40 @@ public class OwnerDAO implements InterfaceDAO<Owner> {
     }
 
     @Override
-    public void updateData(Owner object) {
+    public void updateData(Owner object) throws SQLException {
+        String updateUsers = "UPDATE users SET username = ?, password = ?, email = ?, user_type = ? WHERE id = ?";
+        String updateOwner = "UPDATE rental_owners SET shop_name = ?, location = ?, item_rented = ? WHERE user_id = ?";
+        PreparedStatement userStatement = connection.prepareStatement(updateUsers);
+        PreparedStatement ownerStatement = connection.prepareStatement(updateOwner);
 
+        userStatement.setString(1, object.getUserName());
+        userStatement.setString(2, object.getPassword());
+        userStatement.setString(3, object.getEmail());
+        userStatement.setString(4, object.getTipe());
+        userStatement.setInt(5, object.getUserID());
+
+        ownerStatement.setString(1, object.getShopName());
+        ownerStatement.setString(2, object.getLocation());
+        List<Integer> listIdItem = new ArrayList<>();
+        for (Item item: object.getItemRented()) {
+            listIdItem.add(item.getItemID());
+        }
+        Array item = connection.createArrayOf("integer", listIdItem.toArray(new Integer[0]));
+        ownerStatement.setArray(3, item);
+        ownerStatement.setInt(4, object.getUserID());
+
+        userStatement.executeUpdate();
+        ownerStatement.executeUpdate();
+
+        connection.commit();
     }
 
     @Override
     public void deleteData(Owner object) throws SQLException {
-
+        String deleteQuery = "DELETE FROM users WHERE id = ?";
+        PreparedStatement statement = connection.prepareStatement(deleteQuery);
+        statement.setInt(1, object.getUserID());
+        statement.executeUpdate();
+        connection.commit();
     }
 }

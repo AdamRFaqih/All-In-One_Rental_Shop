@@ -124,7 +124,7 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
         customerStatement.setInt(6, object.getUserID());
 
         userStatement.executeUpdate();
-        userStatement.executeUpdate();
+        customerStatement.executeUpdate();
 
         connection.commit();
 
