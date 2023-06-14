@@ -4,6 +4,8 @@
  */
 package Application;
 
+import JGUI.CustomerMainView;
+
 /**
  *
  * @author rahma
@@ -12,6 +14,7 @@ public class Application {
     //exekusi program
     //  menginisiasi program
     //  menjalankan program
+    static CustomerMainView mainMenu = new CustomerMainView();
     
     
     //memulai penggunaan Frame.
@@ -20,7 +23,9 @@ public class Application {
     //  menu login  -> menu utama   -> browse item          -> item Detail (rent)   -> confimation  <- menu utama
     //                              -> manage rented item   -> item Detail (return) -> confimation  <- manage rented item
     //                              -> TopUp                <- menu utama
-    
+    public static void run(){
+        mainMenu.show();
+    }
     //  *as Owner
     //  menu login  -> menu utama   -> manage Item  -> Add Item             <- manage Item
     //                                              -> remove item          <- manage Item
