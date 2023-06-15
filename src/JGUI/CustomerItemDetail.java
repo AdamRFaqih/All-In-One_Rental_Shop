@@ -6,6 +6,7 @@ package JGUI;
 
 import Item.Item;
 import User.Customer;
+import User.Owner;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -72,7 +73,7 @@ public class CustomerItemDetail extends NavigatableJFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        ActionButton = new javax.swing.JButton();
         LabelBiaya = new javax.swing.JLabel();
         labelDeskripsi = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -89,10 +90,10 @@ public class CustomerItemDetail extends NavigatableJFrame{
             }
         });
 
-        jButton1.setText("Rent Item");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ActionButton.setText("Rent Item");
+        ActionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ActionButtonActionPerformed(evt);
             }
         });
 
@@ -125,7 +126,7 @@ public class CustomerItemDetail extends NavigatableJFrame{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LabelBiaya)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(ActionButton)
                         .addGap(30, 30, 30))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,18 +157,21 @@ public class CustomerItemDetail extends NavigatableJFrame{
                         .addGap(18, 18, 18)
                         .addComponent(namaBarang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(ActionButton)))
                 .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ActionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActionButtonActionPerformed
         // TODO add your handling code here:
+        if(this.ActionButton.getText() == "Return"){
+            
+        }
         this.dispose();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ActionButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -186,7 +190,11 @@ public class CustomerItemDetail extends NavigatableJFrame{
         ArrayList<Item> rentedItems = (ArrayList<Item>)account.getRentedItem();
         
         //tempdata
-        
+        for (Owner owner : Application.Application.getOwners()){
+            if(owner.getItemRented().stream().filter(o -> o.getItemID() == this.item.getItemID()).findFirst().orElse(null) != null ){
+                this.ActionButton.setText("Return");
+            }else{this.ActionButton.setText("Rent Item");}
+        }
         
     }//GEN-LAST:event_formWindowActivated
 
@@ -226,9 +234,9 @@ public class CustomerItemDetail extends NavigatableJFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ActionButton;
     private javax.swing.JLabel LabelBiaya;
     private javax.swing.JLabel iconLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel labelDeskripsi;
     private javax.swing.JLabel namaBarang;

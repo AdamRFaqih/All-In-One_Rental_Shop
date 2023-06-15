@@ -39,7 +39,7 @@ public class ItemCollection extends javax.swing.JPanel {
 //            item.resize(item.minimumSize().width, item.minimumSize().height);
 //        }
 //    }
-    public final void renderCollection(ArrayList<Item> items){
+    public  final void renderCollection(ArrayList<Item> items){
         this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         this.setLayout(new GridLayout(0,1+(int) items.size()/4,18,18));
         

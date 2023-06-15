@@ -110,6 +110,7 @@ public class LoginView extends NavigatableJFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
         User account = LoginController.LoginUser(username.getText(), password.getText());
+        Application.Application.Account = account;
         if(account == null){
             this.jLabel2.setText("UserName - USERNAME atau Password salah");
             this.jLabel1.setText("password - USERNAME atau Password salah");

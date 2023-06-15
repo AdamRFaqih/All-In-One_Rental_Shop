@@ -1,6 +1,7 @@
 
 import Application.Application;
 import Database.CustomerDAO;
+import Database.MobilDAO;
 import Item.Game;
 import Item.Item;
 import Item.Mobil;
@@ -53,6 +54,23 @@ public class Main {
         );
         System.out.println(rentedItem.size());
         customer.setRentedItem(rentedItem);
+        
+//        MobilDAO mobilDAO = new MobilDAO();
+//        try {
+//            mobilDAO.createData(new Mobil(
+//                    300532,
+//                    "Supra",
+//                    "Mobil balap super cepat",
+//                    2000000,
+//                    true,
+//                    "Toyota",
+//                    "mk-3",
+//                    2013,
+//                    "bensin"
+//            ));
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
 //        try {
 //            customerDAO.createData(customer);
