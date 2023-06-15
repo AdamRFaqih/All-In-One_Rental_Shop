@@ -4,13 +4,14 @@
  */
 package JGUI;
 
-import static JGUI.ItemPanel.imgPath;
+import Item.Item;
+import User.Customer;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
 /**
  *
@@ -39,6 +40,28 @@ public class CustomerItemDetail extends NavigatableJFrame{
         }
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
+    public CustomerItemDetail(Item item) {
+        initComponents();
+        this.item = item;
+        this.namaBarang.setText(item.getName());
+        this.labelDeskripsi.setText(item.getDescription());
+        this.LabelBiaya.setText(String.valueOf(item.getRentalChargePerDay()));
+        this.setTitle("Item Detail");
+        try{
+            iconLabel.setText("");
+            
+            BufferedImage img = null;
+            img = ImageIO. read(new File("DefaultItemImg.png"));
+            Image img1 = img.getScaledInstance (iconLabel.getPreferredSize().width, iconLabel.getPreferredSize().height, Image.SCALE_SMOOTH);
+            ImageIcon ic = new ImageIcon(img1);
+            
+            iconLabel.setIcon(ic);
+        }
+        catch(Exception e){
+            System.out.print(e.toString());
+        }
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,15 +73,17 @@ public class CustomerItemDetail extends NavigatableJFrame{
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        LabelBiaya = new javax.swing.JLabel();
+        labelDeskripsi = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         iconLabel = new javax.swing.JLabel();
         namaBarang = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
@@ -71,11 +96,9 @@ public class CustomerItemDetail extends NavigatableJFrame{
             }
         });
 
-        jLabel1.setText("Rent: Rp. /day");
+        LabelBiaya.setText("Rent: Rp. /day");
 
-        jLabel2.setText("deposit: Rp. /unit");
-
-        jLabel3.setText("Deskripsi:");
+        labelDeskripsi.setText("Deskripsi:");
 
         jButton2.setText("X");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -97,13 +120,11 @@ public class CustomerItemDetail extends NavigatableJFrame{
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(labelDeskripsi)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                        .addComponent(LabelBiaya)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(30, 30, 30))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -124,11 +145,10 @@ public class CustomerItemDetail extends NavigatableJFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(jLabel3)
+                        .addComponent(labelDeskripsi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(LabelBiaya)
+                        .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(9, 9, 9)
@@ -158,6 +178,17 @@ public class CustomerItemDetail extends NavigatableJFrame{
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        CustomerMainView mainView = (CustomerMainView) prevFrame;
+        Customer account = (Customer) mainView.getAccount();
+        ArrayList<Item> rentedItems = (ArrayList<Item>)account.getRentedItem();
+        
+        //tempdata
+        
+        
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -195,13 +226,12 @@ public class CustomerItemDetail extends NavigatableJFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelBiaya;
     private javax.swing.JLabel iconLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel labelDeskripsi;
     private javax.swing.JLabel namaBarang;
     // End of variables declaration//GEN-END:variables
-
+    private Item item;
 }

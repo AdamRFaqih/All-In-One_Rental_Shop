@@ -4,6 +4,9 @@
  */
 package JGUI;
 
+import Item.Item;
+import User.Customer;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -13,13 +16,33 @@ import javax.swing.JFrame;
 public class CustomerManageView extends NavigatableJFrame {
 
     /**
+     * @return the itemCollection1
+     */
+    public JGUI.ItemCollection getItemCollection1() {
+        return itemCollection1;
+    }
+
+    
+    /**
      * Creates new form CostumerManageView
      */
-    public CustomerManageView() {
+    public CustomerManageView(JFrame prevFrame) {
         initComponents();
         this.setTitle("Manage Item");
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        
+        
+        //ArrayList<ItemPanel> items = user
+        
+        // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
+        // --> this.getItemCollection1().renderCollection( ArrayList<ItemPanel> );
+        CustomerMainView mainView = (CustomerMainView) prevFrame;
+        Customer account = (Customer) mainView.getAccount();
+        ArrayList<Item> items = (ArrayList<Item>)account.getRentedItem();
+        this.itemCollection1.renderCollection(items);
+        itemCollection1.setVisible(true);
     }
 
     /**
@@ -114,7 +137,7 @@ public class CustomerManageView extends NavigatableJFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerManageView().setVisible(true);
+                new CustomerManageView(null).setVisible(true);
             }
         });
     }
@@ -123,6 +146,20 @@ public class CustomerManageView extends NavigatableJFrame {
     private JGUI.ItemCollection itemCollection1;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
+    private Customer user;
 
+    /**
+     * @return the user
+     */
+    public Customer getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(Customer user) {
+        this.user = user;
+    }
     
 }

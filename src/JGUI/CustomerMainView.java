@@ -4,6 +4,10 @@
  */
 package JGUI;
 
+import Database.CustomerDAO;
+import User.Customer;
+import User.User;
+
 /**
  *
  * @author rahma
@@ -13,7 +17,8 @@ public class CustomerMainView extends NavigatableJFrame {
     /**
      * Creates new form OwnerMainView
      */
-    public CustomerMainView() {
+    public CustomerMainView(User account) {
+        this.account = (Customer)account;
         initComponents();
         initAdjacentFrame();
         this.setLocationRelativeTo(null);
@@ -21,7 +26,7 @@ public class CustomerMainView extends NavigatableJFrame {
         this.setVisible(true);
         
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
-        // --> this.browseView2.getItemCollection().renderCollection( );
+        // --> this.browseView2.getItemCollection().renderCollection( ArrayList<ItemPanel> );
         
     }
 
@@ -39,6 +44,11 @@ public class CustomerMainView extends NavigatableJFrame {
         browseView2 = new JGUI.BrowseView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jButton2.setText("TopUp");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -84,8 +94,7 @@ public class CustomerMainView extends NavigatableJFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void initAdjacentFrame() {
-        manageView = new CustomerManageView();
-        manageView.setPrevFrame(this);
+        manageView = new CustomerManageView(this);
         manageView.setVisible(false);
         topUpView = new TopUpView();
         topUpView.setVisible(false);
@@ -93,15 +102,21 @@ public class CustomerMainView extends NavigatableJFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        topUpView.setPrevFrame(this);
         topUpView.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.hide();
-        
+        manageView.setPrevFrame(this);
         manageView.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -134,7 +149,7 @@ public class CustomerMainView extends NavigatableJFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerMainView().setVisible(true);
+                new CustomerMainView(new Customer()).setVisible(true);
                 
             }
         });
@@ -145,8 +160,17 @@ public class CustomerMainView extends NavigatableJFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
-    
+    private Customer account;
     // Frame declaration
     private CustomerManageView manageView;
     private TopUpView topUpView;
+
+    /**
+     * @return the account
+     */
+    public User getAccount() {
+        return account;
+    }
+    
+    
 }

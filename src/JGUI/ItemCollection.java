@@ -4,6 +4,7 @@
  */
 package JGUI;
 
+import Item.Item;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -16,27 +17,60 @@ import java.util.ArrayList;
 public class ItemCollection extends javax.swing.JPanel {
 
     public ItemCollection() {
-        this(new ArrayList<ItemPanel>());
+        this(new ArrayList<Item>());
     }
     /**
      * Creates new form ItemCollection
      * @param items
      */
-    public ItemCollection(ArrayList<ItemPanel> items) {
+    public ItemCollection(ArrayList<Item> items) {
         initComponents();
         this.setPreferredSize(new Dimension(460,300));
         this.renderCollection(items);
     }
     
-    public final void renderCollection(ArrayList<ItemPanel> items){
+//    public final void renderCollection(ArrayList<ItemPanel> items){
+//        this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+//        this.setLayout(new GridLayout(0,1+(int) items.size()/4,18,18));
+//        
+//        int index = 1;
+//        for (ItemPanel item : items){
+//            this.add(item);
+//            item.resize(item.minimumSize().width, item.minimumSize().height);
+//        }
+//    }
+    public final void renderCollection(ArrayList<Item> items){
         this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         this.setLayout(new GridLayout(0,1+(int) items.size()/4,18,18));
         
-        int index = 1;
-        for (ItemPanel item : items){
-            item.setItemName(item.getItemName() + index++);
-            this.add(item);
-            item.resize(item.minimumSize().width, item.minimumSize().height);
+            System.out.println(items.size());
+        for (Item item : items){
+            System.out.println(item.getName());
+            CustomerItemDetail tempDetail = new CustomerItemDetail(item);
+            
+            ItemPanel tempPanel = new ItemPanel();
+            tempPanel.setItemName(item.getName());
+            tempPanel.setItemForm(tempDetail);
+            
+            this.add(tempPanel);
+            tempPanel.resize(tempPanel.minimumSize().width, tempPanel.minimumSize().height);
+        }
+    }
+    public final void renderCollection(ArrayList<Item> items, boolean managePanel){
+        this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        this.setLayout(new GridLayout(0,1+(int) items.size()/4,18,18));
+        
+            System.out.println(items.size());
+        for (Item item : items){
+            System.out.println(item.getName());
+            CustomerItemDetail tempDetail = new CustomerItemDetail(item);
+            
+            ItemPanel tempPanel = new ItemPanel();
+            tempPanel.setItemName(item.getName());
+            tempPanel.setItemForm(tempDetail);
+            
+            this.add(tempPanel);
+            tempPanel.resize(tempPanel.minimumSize().width, tempPanel.minimumSize().height);
         }
     }
 

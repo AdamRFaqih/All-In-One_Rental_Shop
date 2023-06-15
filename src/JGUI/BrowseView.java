@@ -4,6 +4,7 @@
  */
 package JGUI;
 
+import Item.Item;
 import java.util.ArrayList;
 
 /**
@@ -19,13 +20,13 @@ public class BrowseView extends javax.swing.JPanel {
         initComponents();
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
         // --> this.itemCollection.renderCollection(items);
-        this.itemCollection.renderCollection(new ArrayList<ItemPanel>(){});
+        this.itemCollection.renderCollection(new ArrayList<Item>(){});
     }
     /**
      * Creates new form BrowseView
      * @param items
      */
-    public BrowseView(ArrayList<ItemPanel> items) {
+    public BrowseView(ArrayList<Item> items) {
         initComponents();
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
         // --> this.itemCollection.renderCollection(items);
