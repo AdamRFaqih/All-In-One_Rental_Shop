@@ -29,6 +29,8 @@ public class MotorDAO implements InterfaceDAO<Motor> {
         itemInsertStatement.setDouble(3, object.getRentalChargePerDay());
         itemInsertStatement.setBoolean(4, object.isAvailbility());
 
+        itemInsertStatement.executeUpdate();
+
 
         ResultSet generatedKeys = itemInsertStatement.getGeneratedKeys();
         if (generatedKeys.next()) {

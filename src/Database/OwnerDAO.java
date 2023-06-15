@@ -25,6 +25,7 @@ public class OwnerDAO implements InterfaceDAO<Owner> {
         userInsertStatement.setString(2, object.getPassword());
         userInsertStatement.setString(3, object.getEmail());
         userInsertStatement.setString(4, object.getTipe());
+        userInsertStatement.executeUpdate();
 
         // Get the generated user ID
         ResultSet generatedKeys = userInsertStatement.getGeneratedKeys();
