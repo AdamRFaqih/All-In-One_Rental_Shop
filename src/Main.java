@@ -25,7 +25,7 @@ public class Main {
 //        for (int i = 0; i < customers.size(); i++){
 //            System.out.println(customers.get(i));
 //        }
-
+        Application.Application.run();
 
     }
 }
