@@ -1,6 +1,5 @@
 import Database.CustomerDAO;
 
-import Database.GameDAO;
 import Item.Game;
 import Item.Item;
 import Item.Mobil;
@@ -8,8 +7,6 @@ import User.Customer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main {
     

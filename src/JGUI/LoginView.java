@@ -51,6 +51,11 @@ public class LoginView extends NavigatableJFrame {
         jButton2.setText("New Customer");
 
         jButton3.setText("New Owner");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +120,7 @@ public class LoginView extends NavigatableJFrame {
             this.jLabel1.setText("password - USERNAME atau Password salah");
             return;
         }
+        System.out.println(account instanceof Customer);
         if(account instanceof Customer){
             Application.Application.setMainMenu(new CustomerMainView(account));
         }
@@ -126,6 +132,11 @@ public class LoginView extends NavigatableJFrame {
         Application.Application.getMainMenu().show();
         this.dispose();
     }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new LoginController().register(username.getText(),password.getText());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
