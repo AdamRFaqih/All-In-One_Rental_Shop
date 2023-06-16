@@ -28,6 +28,7 @@ public class MovieDAO implements InterfaceDAO<Movie> {
         itemInsertStatement.setString(2, object.getDescription());
         itemInsertStatement.setDouble(3, object.getRentalChargePerDay());
         itemInsertStatement.setBoolean(4, object.isAvailbility());
+        itemInsertStatement.executeUpdate();
 
 
         ResultSet generatedKeys = itemInsertStatement.getGeneratedKeys();
