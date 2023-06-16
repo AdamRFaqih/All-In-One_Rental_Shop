@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1796ddd3-566c-4276-b257-3d67f5970e36" name="Changes" comment="further add dao">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/GameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/GameDAO.java" afterDir="false" />
+    <list default="true" id="1796ddd3-566c-4276-b257-3d67f5970e36" name="Changes" comment="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller">
       <change beforePath="$PROJECT_DIR$/src/Database/MobilDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/MobilDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Database/MotorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/MotorDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Database/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/MovieDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Database/OwnerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/OwnerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item/Motor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item/Motor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,10 @@
       <workItem from="1686138093913" duration="4132000" />
       <workItem from="1686150680385" duration="24013000" />
       <workItem from="1686292131623" duration="9624000" />
-      <workItem from="1686575788784" duration="3690000" />
+      <workItem from="1686575788784" duration="4343000" />
+      <workItem from="1686620597505" duration="514000" />
+      <workItem from="1686869390138" duration="990000" />
+      <workItem from="1686870580942" duration="541000" />
     </task>
     <task id="LOCAL-00001" summary="implement base class item, and user">
       <created>1681281411355</created>
@@ -140,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686405935461</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller">
+      <created>1686579535345</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686579535345</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +178,7 @@
     <MESSAGE value="implement base class item, and user" />
     <MESSAGE value="add DatabaseConnection and add DAO" />
     <MESSAGE value="further add dao" />
-    <option name="LAST_COMMIT_MESSAGE" value="further add dao" />
+    <MESSAGE value="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller" />
   </component>
 </project>

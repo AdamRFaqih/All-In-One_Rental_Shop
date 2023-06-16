@@ -26,7 +26,7 @@ public class GameDAO implements InterfaceDAO<Game> {
         itemInsertStatement.setDouble(3, object.getRentalChargePerDay());
         itemInsertStatement.setBoolean(4, object.isAvailbility());
 
-
+        itemInsertStatement.executeUpdate();
         ResultSet generatedKeys = itemInsertStatement.getGeneratedKeys();
         if (generatedKeys.next()) {
             int itemID = generatedKeys.getInt(1);
