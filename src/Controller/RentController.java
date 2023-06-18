@@ -40,4 +40,10 @@ public class RentController {
             return false;
         }
     }
+    public static int GenerateDayOfRent(Date startDate, Date endDate){
+        return startDate.compareTo(endDate);
+    }
+    public static double GenerateTotalPayment(Item item, int dayOfRent){
+        return item.getRentalChargePerDay() * dayOfRent;
+    }
 }
