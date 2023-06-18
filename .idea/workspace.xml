@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1796ddd3-566c-4276-b257-3d67f5970e36" name="Changes" comment="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller">
-      <change beforePath="$PROJECT_DIR$/src/Database/MobilDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/MobilDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/MotorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/MotorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/MovieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/MovieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/CustomerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Database/OwnerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/OwnerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
