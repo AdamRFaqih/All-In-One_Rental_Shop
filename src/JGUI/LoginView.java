@@ -149,7 +149,7 @@ public class LoginView extends NavigatableJFrame {
             this.PasswordLabel.setText("password - USERNAME atau Password salah");
             return;
         }
-        
+        Application.Application.Account = account;
         Application.Application.getMainMenu().show();
         this.dispose();
     }//GEN-LAST:event_LoginButtonActionPerformed
