@@ -50,7 +50,7 @@ public class GameDAO implements InterfaceDAO<Game> {
 
     @Override
     public List<Game> readData() throws SQLException {
-        String query = "SELECT * FROM items NATURAL JOIN game_items";
+        String query = "select i.*, gi.* from items i join game_items gi on i.id = gi.item_id";
         PreparedStatement queryStatement = connection.prepareStatement(query);
         List<Game> games = new ArrayList<>();
         ResultSet res = queryStatement.executeQuery();
