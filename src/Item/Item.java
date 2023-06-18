@@ -66,7 +66,12 @@ public abstract class Item {
     public void setRentalChargePerDay(double rentalChargePerDay) {
         this.rentalChargePerDay = rentalChargePerDay;
     }
-
+    
+    
+    
+    public boolean isAvailbility(){
+        return this.availbility;
+    }
     public boolean isAvailbility(Date startDate, Date endDate) throws SQLException {
         TransactionDAO transactionDAO = new TransactionDAO();
         return transactionDAO.readData().stream().filter(transaction -> 
