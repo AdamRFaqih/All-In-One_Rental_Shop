@@ -38,7 +38,7 @@ public class LoginView extends NavigatableJFrame {
         password = new javax.swing.JPasswordField();
         PasswordLabel = new javax.swing.JLabel();
         UserNameLabel = new javax.swing.JLabel();
-        massage = new javax.swing.JLabel();
+        message = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +73,7 @@ public class LoginView extends NavigatableJFrame {
 
         UserNameLabel.setText("UserName");
 
-        massage.setText("Login or Register here");
+        message.setText("Login or Register here");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,14 +95,14 @@ public class LoginView extends NavigatableJFrame {
                             .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(massage)))
+                        .addComponent(message)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(massage)
+                .addComponent(message)
                 .addGap(18, 18, 18)
                 .addComponent(UserNameLabel)
                 .addGap(12, 12, 12)
@@ -152,6 +152,8 @@ public class LoginView extends NavigatableJFrame {
         // TODO add your handling code here:
         try{
             LoginController.customerRegister(username.getText(), password.getText());
+            message.setText("Register Success, you can login here");
+            resetField();
         } catch (Exception e){
             System.out.println(e.toString());
         }
@@ -161,7 +163,8 @@ public class LoginView extends NavigatableJFrame {
         // TODO add your handling code here:
         try{
             LoginController.customerRegister(username.getText(), password.getText());
-            massage.setText("Register Success, you can login here");
+            message.setText("Register Success, you can login here");
+            resetField();
         } catch (Exception e){
             System.out.println(e.toString());
         }
@@ -212,7 +215,7 @@ public class LoginView extends NavigatableJFrame {
     private javax.swing.JLabel UserNameLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel massage;
+    private javax.swing.JLabel message;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
