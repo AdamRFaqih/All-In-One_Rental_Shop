@@ -44,6 +44,7 @@ public class CustomerManageView extends NavigatableJFrame {
     
     public void refresh(){
         Customer account = (Customer) Application.Application.getAccount();
+        this.itemCollection.removeAll();
         this.itemCollection.renderCollection((ArrayList)account.getRentedItem());
     }
 

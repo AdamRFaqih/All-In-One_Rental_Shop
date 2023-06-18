@@ -11,12 +11,7 @@ import Item.Motor;
 import Item.Movie;
 import User.Customer;
 import User.Owner;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -64,8 +59,8 @@ public class CustomerItemDetail extends NavigatableJFrame{
         this.LabelBiaya.setText(String.valueOf(item.getRentalChargePerDay()));
         this.setTitle("Item Detail");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,15 +176,16 @@ public class CustomerItemDetail extends NavigatableJFrame{
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        CustomerMainView mainView = (CustomerMainView) prevFrame;
-        Customer account = (Customer) Application.Application.getAccount();
-        ArrayList<Item> rentedItems = (ArrayList<Item>)account.getRentedItem();
         
         //tempdata
         for (Owner owner : Application.Application.getOwners()){
             if(owner.getItemRented().stream().filter(o -> o.getItemID() == this.item.getItemID()).findFirst().orElse(null) != null ){
                 this.ActionButton.setText("Return");
-            }else{this.ActionButton.setText("Rent Item");}
+                System.out.println("you have this item");
+            }else{
+                this.ActionButton.setText("Rent Item");
+                System.out.println("you have this item");
+            }
         }
         
     }//GEN-LAST:event_formWindowActivated
