@@ -33,6 +33,12 @@ public class BrowseController {
         }
         return items;
     }
+    public static boolean SearchItem(Item item){
+        for (Owner owner : Application.Application.getOwners()){
+            return owner.getItemRented().stream().filter(checkItem -> checkItem.getItemID() == item.getItemID()).findFirst().orElse(null) != null;
+        }
+        return false;
+    }
     public static ArrayList<Item> SearchItem(String keyword, int count, Date startDate, Date endDate){
         ArrayList<Owner> owners = Application.Application.getOwners();
         ArrayList<Item> items = new ArrayList<Item>();

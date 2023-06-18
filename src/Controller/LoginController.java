@@ -21,6 +21,16 @@ import java.util.logging.Logger;
  * @author rahma
  */
 public class LoginController {
+    public static Customer getCustomer(User Account){
+        return getCustomers().stream()
+                .filter(customer -> customer.getUserID() == Account.getUserID())
+                .findFirst().orElse(null);
+    }
+    public static Owner getOwner(User Account){
+        return getOwners().stream()
+                .filter(owner -> owner.getUserID() == Account.getUserID())
+                .findFirst().orElse(null);
+    }
     public static ArrayList<Customer> getCustomers(){
         CustomerDAO customerDAO = new CustomerDAO();
         ArrayList<Customer> customers = new ArrayList<Customer>(); 

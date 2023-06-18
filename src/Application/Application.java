@@ -49,10 +49,7 @@ public class Application {
     
     //memulai penggunaan Frame.
     public static void run(){
-        //gaintUserSession();
-        Object item = new Mobil();
-        
-        
+        gaintUserSession();
     }
     
     //  *as Customer
