@@ -37,7 +37,9 @@ public class BrowseController {
         for (Owner owner : owners){
             for (Item item : owner.getItemRented()){
                 boolean validName =  item.getName().equals(keyword);
+                boolean available = item.isAvailbility();
                 boolean validProductAttribut = false;
+                
                 switch (item.toString()){
                     case "class Item.Mobil":
                         // Do in case mobil
@@ -75,7 +77,7 @@ public class BrowseController {
                         break;
                 }
                 
-                if (validName || validProductAttribut){
+                if ((validName || validProductAttribut) && available){
                     items.add(item);
                     index++;
                 }
