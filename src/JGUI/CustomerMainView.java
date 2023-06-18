@@ -4,7 +4,7 @@
  */
 package JGUI;
 
-import Controller.CustomerMainController;
+import Controller.BrowseController;
 import User.Customer;
 import User.User;
 
@@ -27,9 +27,7 @@ public class CustomerMainView extends NavigatableJFrame {
         
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
         // --> this.browseView2.getItemCollection().renderCollection( ArrayList<ItemPanel> );
-        this.browseView2.getItemCollection().renderCollection(
-                CustomerMainController.generateRecomendationItem(this.maxItemShow)
-        );
+        this.browseView2.showRecomendationItem(this.maxItemShow);
     }
 
     /**

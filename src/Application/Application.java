@@ -5,6 +5,8 @@
 package Application;
 
 import Controller.LoginController;
+import Item.Mobil;
+import Item.Motor;
 import JGUI.LoginView;
 import User.Customer;
 import User.Owner;
@@ -35,7 +37,7 @@ public class Application {
     //  menginisiasi program
     //  menjalankan program
     static JFrame mainMenu = new JFrame();
-    public static User Account = null;
+    public static User Account = new Customer();
     private static ArrayList<Owner> Owners = new ArrayList<Owner>();
     private static ArrayList<Customer> Customers = new ArrayList<Customer>();
     
@@ -47,7 +49,10 @@ public class Application {
     
     //memulai penggunaan Frame.
     public static void run(){
-        gaintUserSession();
+        //gaintUserSession();
+        Object item = new Mobil();
+        
+        
     }
     
     //  *as Customer
