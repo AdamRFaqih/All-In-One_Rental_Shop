@@ -5,69 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1796ddd3-566c-4276-b257-3d67f5970e36" name="Changes" comment="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller">
-      <change afterPath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_update_resources" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Application/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/CustomerDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/DatabaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/GameDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/InterfaceDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/ItemDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/MobilDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/MotorDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/MovieDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/OwnerDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Database/TransactionDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Item/Asuransi.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Item/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Item/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Item/Mobil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Item/Motor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Item/Movie.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/BrowseView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/BrowseView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/BrowseView.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerItemDetail$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerItemDetail$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerItemDetail$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerItemDetail$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerItemDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerItemDetail.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerMainView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerMainView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerMainView$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerMainView$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerMainView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerMainView.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerManageView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerManageView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerManageView$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerManageView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/CustomerManageView.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/ItemCollection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/ItemCollection.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/ItemPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/ItemPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/ItemPanel.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/LoginView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/LoginView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/LoginView$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/LoginView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/LoginView.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/NavigatableJFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/TopUpView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/TopUpView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/TopUpView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/JGUI/TopUpView.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Transaction/Transaction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/User/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/User/Owner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/User/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JGUI/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Owner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +117,7 @@
       <workItem from="1686150680385" duration="24013000" />
       <workItem from="1686292131623" duration="9624000" />
       <workItem from="1686575788784" duration="3690000" />
-      <workItem from="1687107239613" duration="2142000" />
+      <workItem from="1687107239613" duration="2636000" />
     </task>
     <task id="LOCAL-00001" summary="implement base class item, and user">
       <created>1681281411355</created>
