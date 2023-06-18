@@ -36,8 +36,9 @@ public class LoginView extends NavigatableJFrame {
         jButton3 = new javax.swing.JButton();
         username = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        PasswordLabel = new javax.swing.JLabel();
+        UserNameLabel = new javax.swing.JLabel();
+        message = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,8 +50,18 @@ public class LoginView extends NavigatableJFrame {
         });
 
         jButton2.setText("New Customer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("New Owner");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,37 +69,46 @@ public class LoginView extends NavigatableJFrame {
             }
         });
 
-        jLabel1.setText("Password:");
+        PasswordLabel.setText("Password:");
 
-        jLabel2.setText("UserName");
+        UserNameLabel.setText("UserName");
+
+        message.setText("Login or Register here");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton3))
-                    .addComponent(LoginButton)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UserNameLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(136, 136, 136)
+                                .addComponent(jButton3))
+                            .addComponent(LoginButton)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PasswordLabel)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(message)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel2)
+                .addGap(22, 22, 22)
+                .addComponent(message)
+                .addGap(18, 18, 18)
+                .addComponent(UserNameLabel)
                 .addGap(12, 12, 12)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(PasswordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
@@ -111,22 +131,49 @@ public class LoginView extends NavigatableJFrame {
         // TODO add your handling code here:
         User account = LoginController.LoginUser(username.getText(), password.getText());
         if(account == null){
-            this.jLabel2.setText("UserName - USERNAME atau Password salah");
-            this.jLabel1.setText("password - USERNAME atau Password salah");
+            this.UserNameLabel.setText("UserName - USERNAME atau Password salah");
+            this.PasswordLabel.setText("password - USERNAME atau Password salah");
             return;
         }
+        System.out.println(account instanceof Customer);
         if(account instanceof Customer){
-            Application.Application.setMainMenu(new CustomerMainView(account));
+            Application.Application.setMainMenu(new CustomerMainView());
         }
         else if(account instanceof Owner){
             //menunggu punya kamal
-//            Application.Application.setMainMenu(new CustomerMainView(account));
+            Application.Application.setMainMenu(new OwnerMainView());
         }
         
         Application.Application.getMainMenu().show();
         this.dispose();
     }//GEN-LAST:event_LoginButtonActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        try{
+            LoginController.customerRegister(username.getText(), password.getText());
+            message.setText("Register Success, you can login here");
+            resetField();
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+            LoginController.customerRegister(username.getText(), password.getText());
+            message.setText("Register Success, you can login here");
+            resetField();
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void resetField(){
+        this.username.setText("");
+        this.password.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -164,10 +211,11 @@ public class LoginView extends NavigatableJFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
+    private javax.swing.JLabel PasswordLabel;
+    private javax.swing.JLabel UserNameLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel message;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

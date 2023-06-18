@@ -11,10 +11,13 @@ public class Owner extends User {
     private List<Item> itemRented;
 
     public Owner() {
+        super(0, "", "", "", "owner");
+        itemRented = new ArrayList<Item>();
     }
 
     public Owner(int userID, String name, String email, String password, String tipe) {
         super(userID, name, email, password, tipe);
+        itemRented = new ArrayList<Item>();
     }
 
     public Owner(String shopName, String location, List<Item> itemRented) {

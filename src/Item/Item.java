@@ -1,5 +1,12 @@
 package Item;
 
+import Database.TransactionDAO;
+import Transaction.Transaction;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.stream.Collectors;
+
 public abstract class Item {
     static private int itemCount;
     
@@ -60,8 +67,13 @@ public abstract class Item {
         this.rentalChargePerDay = rentalChargePerDay;
     }
 
-    public boolean isAvailbility() {
-        return availbility;
+    public boolean isAvailbility(Date startDate, Date endDate) throws SQLException {
+        TransactionDAO transactionDAO = new TransactionDAO();
+        return transactionDAO.readData().stream().filter(transaction -> 
+                transaction.getItemId() == this.itemID &&
+                transaction.getStartDate().after(endDate) || 
+                transaction.getEndDate().before(startDate))
+                .findFirst().orElse(null) != null;
     }
 
     public void setAvailbility(boolean availbility) {

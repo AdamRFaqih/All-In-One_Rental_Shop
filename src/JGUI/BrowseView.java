@@ -4,6 +4,7 @@
  */
 package JGUI;
 
+import Controller.BrowseController;
 import Item.Item;
 import java.util.ArrayList;
 
@@ -32,7 +33,17 @@ public class BrowseView extends javax.swing.JPanel {
         // --> this.itemCollection.renderCollection(items);
         this.itemCollection.renderCollection(items);
     }
-
+    
+    public void showRecomendationItem(int count){
+        this.getItemCollection().renderCollection(
+                BrowseController.generateRecomendationItem(count)
+        );
+    }
+    
+    public void browseItem(){
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

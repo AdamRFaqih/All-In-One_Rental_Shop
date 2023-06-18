@@ -16,6 +16,8 @@ public class Customer extends User{
     private double wallet;
 
     public Customer() {
+        super(0, "", "", "", "customer");
+        rentedItem = new ArrayList<Item>();
     }
 
     public Customer(String phoneNumber, String address, List<Item> rentedItem, String loyaltyType, int numberBorrow, double wallet) {
@@ -29,6 +31,7 @@ public class Customer extends User{
 
     public Customer(int userID, String name, String email, String password, String tipe) {
         super(userID, name, email, password, tipe);
+        rentedItem = new ArrayList<Item>();
     }
 
     public Customer(
