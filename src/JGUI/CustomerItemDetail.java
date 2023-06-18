@@ -184,7 +184,7 @@ public class CustomerItemDetail extends NavigatableJFrame{
                 System.out.println("you have this item");
             }else{
                 this.ActionButton.setText("Rent Item");
-                System.out.println("you have this item");
+                System.out.println("you don't have this item");
             }
         }
         

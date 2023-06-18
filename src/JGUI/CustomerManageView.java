@@ -32,8 +32,6 @@ public class CustomerManageView extends NavigatableJFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        
-        
         //ArrayList<ItemPanel> items = user
         
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
