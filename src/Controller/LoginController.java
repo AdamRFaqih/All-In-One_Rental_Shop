@@ -6,9 +6,7 @@ package Controller;
 
 import Database.CustomerDAO;
 import Database.OwnerDAO;
-import Item.Game;
 import Item.Item;
-import Item.Mobil;
 import JGUI.CustomerManageView;
 import User.Customer;
 import User.Owner;
@@ -25,15 +23,14 @@ import java.util.logging.Logger;
 public class LoginController {
     public static ArrayList<Customer> getCustomers(){
         CustomerDAO customerDAO = new CustomerDAO();
-        ArrayList<Customer> customers = null; 
+        ArrayList<Customer> customers = new ArrayList<Customer>(); 
         try {
             customers = (ArrayList<Customer>)customerDAO.readData();
         } 
         catch (SQLException ex) {
             Logger.getLogger(CustomerManageView.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+            return customers;
         }
-        if(customers == null){return null;}
         ArrayList<Customer> tempCustomer = (ArrayList<Customer>)customers.clone();
         for(Customer customer : customers){
             System.out.println("["+customer.getUserName()+" : "+customer.getPassword()+"]");
@@ -42,15 +39,14 @@ public class LoginController {
     }
     public static ArrayList<Owner> getOwners(){
         OwnerDAO ownerDAO = new OwnerDAO();
-        ArrayList<Owner> owners = null; 
+        ArrayList<Owner> owners = new ArrayList<Owner>(); 
         try {
             owners = (ArrayList<Owner>)ownerDAO.readData();
         } 
         catch (SQLException ex) {
             Logger.getLogger(CustomerManageView.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+            return owners;
         }
-        if(owners == null){return null;}
         ArrayList<Customer> tempOwner = (ArrayList<Customer>)owners.clone();
         for(Owner owner : owners){
             System.out.println("["+owner.getUserName()+" : "+owner.getPassword()+"]");
@@ -65,29 +61,24 @@ public class LoginController {
                 .findFirst().orElse(null);
         
         ArrayList<Item> rentedItem = new ArrayList<Item>();
-        rentedItem.add(new Mobil(
-                300532,
-                "Supra",
-                "Mobil balap super cepat",
-                2000000,
-                true,
-                "Toyota",
-                "mk-3",
-                2013,
-                "bensin"
-        ));
-        rentedItem.add(new Game(
-                720734,
-                "PES2021",
-                "game PES2021 full dlc",
-                40000,
-                true,
-                "PES2021",
-                "Soccer",
-                "Konami",
-                "full set"
-        ));
         _user.setRentedItem(rentedItem);
         return _user;
+    }
+    public static void customerRegister(String username, String password) throws SQLException{
+        Customer customer = new Customer(); 
+        customer.setUserName(username);
+        customer.setPassword(password);
+        
+        CustomerDAO customerDAO = new CustomerDAO();
+        customerDAO.createData(customer);
+        
+    }
+    public static void ownerRegister(String username, String password) throws SQLException{
+        Owner owner = new Owner(); 
+        owner.setUserName(username);
+        owner.setPassword(password);
+        
+        OwnerDAO ownerDAO = new OwnerDAO();
+        ownerDAO.createData(owner);
     }
 }
