@@ -54,7 +54,7 @@ public class MotorDAO implements InterfaceDAO<Motor> {
 
     @Override
     public List<Motor> readData() throws SQLException {
-        String query = "SELECT * FROM items NATURAL JOIN motorcycle_items";
+        String query = "select i.*, mi.* from items i join motorcycle_items mi  on i.id = mi.item_id;";
         PreparedStatement queryStatement = connection.prepareStatement(query);
         List<Motor> motorList = new ArrayList<>();
         ResultSet res = queryStatement.executeQuery();

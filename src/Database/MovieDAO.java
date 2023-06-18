@@ -55,7 +55,7 @@ public class MovieDAO implements InterfaceDAO<Movie> {
 
     @Override
     public List<Movie> readData() throws SQLException {
-        String query = "SELECT * FROM items NATURAL JOIN motorcycle_items";
+        String query = "select i.*, mi.* from items i join movie_items mi on i.id = mi.item_id";
         PreparedStatement queryStatement = connection.prepareStatement(query);
         List<Movie> movies = new ArrayList<>();
         ResultSet res = queryStatement.executeQuery();

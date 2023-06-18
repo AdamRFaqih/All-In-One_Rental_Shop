@@ -56,7 +56,7 @@ public class MobilDAO implements InterfaceDAO<Mobil> {
 
     @Override
     public List<Mobil> readData() throws SQLException {
-        String query = "SELECT * FROM items NATURAL JOIN car_items";
+        String query = "select i.*, ci.* from items i join car_items ci on i.id = ci.item_id";
         PreparedStatement queryStatement = connection.prepareStatement(query);
         List<Mobil> cars = new ArrayList<>();
         ResultSet res = queryStatement.executeQuery();

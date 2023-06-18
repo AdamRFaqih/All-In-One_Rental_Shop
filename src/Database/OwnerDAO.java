@@ -57,7 +57,7 @@ public class OwnerDAO implements InterfaceDAO<Owner> {
 
     @Override
     public List<Owner> readData() throws SQLException{
-        String query = "SELECT * FROM transactions";
+        String query = "select u.*, ro. * from users u join rental_owners ro on u.id = ro.user_id";
         ItemDAO itemDAO = new ItemDAO();
         List<Owner> owners = new ArrayList<>();
         List<Item> items = itemDAO.readData();

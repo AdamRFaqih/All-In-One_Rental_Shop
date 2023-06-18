@@ -68,7 +68,7 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
         List<Customer> customers = new ArrayList<>();
         ItemDAO itemDAO = new ItemDAO();
         List<Item> items = itemDAO.readData();
-        String queryStatement = "SELECT * FROM users NATURAL JOIN customers";
+        String queryStatement = "SELECT u.*, c.* FROM users u JOIN customers c ON u.id = c.user_id";
         PreparedStatement statement = connection.prepareStatement(queryStatement);
         ResultSet res = statement.executeQuery();
         while (res.next()){
