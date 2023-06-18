@@ -6,7 +6,11 @@ package Controller;
 
 import Item.*;
 import User.Owner;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,7 +33,7 @@ public class BrowseController {
         }
         return items;
     }
-    public static ArrayList<Item> SearchItem(String keyword, int count){
+    public static ArrayList<Item> SearchItem(String keyword, int count, Date startDate, Date endDate){
         ArrayList<Owner> owners = Application.Application.getOwners();
         ArrayList<Item> items = new ArrayList<Item>();
         
@@ -37,7 +41,12 @@ public class BrowseController {
         for (Owner owner : owners){
             for (Item item : owner.getItemRented()){
                 boolean validName =  item.getName().equals(keyword);
-                boolean available = item.isAvailbility();
+                boolean available = false;
+                try {
+                    available = item.isAvailbility(startDate, endDate);
+                } catch (SQLException ex) {
+                    Logger.getLogger(BrowseController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 boolean validProductAttribut = false;
                 
                 switch (item.toString()){
