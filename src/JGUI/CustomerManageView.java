@@ -19,7 +19,7 @@ public class CustomerManageView extends NavigatableJFrame {
      * @return the itemCollection1
      */
     public JGUI.ItemCollection getItemCollection1() {
-        return itemCollection1;
+        return itemCollection;
     }
 
     
@@ -38,11 +38,13 @@ public class CustomerManageView extends NavigatableJFrame {
         
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
         // --> this.getItemCollection1().renderCollection( ArrayList<ItemPanel> );
-        CustomerMainView mainView = (CustomerMainView) prevFrame;
-        Customer account = (Customer) mainView.getAccount();
-        ArrayList<Item> items = (ArrayList<Item>)account.getRentedItem();
-        this.itemCollection1.renderCollection(items);
-        itemCollection1.setVisible(true);
+        Customer account = (Customer) Application.Application.getAccount();
+        this.itemCollection.renderCollection((ArrayList)account.getRentedItem());
+    }
+    
+    public void refresh(){
+        Customer account = (Customer) Application.Application.getAccount();
+        this.itemCollection.renderCollection((ArrayList)account.getRentedItem());
     }
 
     /**
@@ -55,7 +57,7 @@ public class CustomerManageView extends NavigatableJFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        itemCollection1 = new JGUI.ItemCollection();
+        itemCollection = new JGUI.ItemCollection();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -79,14 +81,14 @@ public class CustomerManageView extends NavigatableJFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
-                    .addComponent(itemCollection1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(itemCollection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(itemCollection1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(itemCollection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
@@ -143,7 +145,7 @@ public class CustomerManageView extends NavigatableJFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JGUI.ItemCollection itemCollection1;
+    private JGUI.ItemCollection itemCollection;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
     private Customer user;

@@ -110,6 +110,7 @@ public class CustomerMainView extends NavigatableJFrame {
         // TODO add your handling code here:
         this.hide();
         manageView.setPrevFrame(this);
+        manageView.refresh();
         manageView.show();
     }//GEN-LAST:event_jButton1ActionPerformed
 

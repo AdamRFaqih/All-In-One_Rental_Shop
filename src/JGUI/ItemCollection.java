@@ -4,7 +4,11 @@
  */
 package JGUI;
 
+import Item.Game;
 import Item.Item;
+import Item.Mobil;
+import Item.Motor;
+import Item.Movie;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -46,14 +50,38 @@ public class ItemCollection extends javax.swing.JPanel {
             System.out.println(items.size());
         for (Item item : items){
             System.out.println(item.getName());
-            CustomerItemDetail tempDetail = new CustomerItemDetail(item);
+            String itemName = "";
+            System.out.println(item.getClass().toString());
+            switch (item.getClass().toString()){
+                    case "class Item.Mobil":
+                        // Do in case mobil
+                        Mobil mobil = (Mobil) item;
+                        itemName = mobil.getModel();
+                        break;
+                    case "class Item.Game":
+                        // Do in case Game
+                        Game game = (Game) item;
+                        itemName = game.getTitle();
+                        break;
+                    case "class Item.Motor":
+                        // Do in case Motor
+                        Motor motor = (Motor) item;
+                        itemName = motor.getModel();
+                        break;
+                    case "class Item.Movie":
+                        // Do in case Movie
+                        Movie movie = (Movie) item;
+                        itemName = movie.getTitle();
+                        break;
+                }
             
+            CustomerItemDetail tempDetail = new CustomerItemDetail(item);
             ItemPanel tempPanel = new ItemPanel();
-            tempPanel.setItemName(item.getName());
+            tempPanel.setItemName(itemName);
             tempPanel.setItemForm(tempDetail);
             
             this.add(tempPanel);
-            tempPanel.resize(tempPanel.minimumSize().width, tempPanel.minimumSize().height);
+            //tempPanel.resize(tempPanel.minimumSize().width, tempPanel.minimumSize().height);
         }
     }
     public final void renderCollection(ArrayList<Item> items, boolean managePanel){

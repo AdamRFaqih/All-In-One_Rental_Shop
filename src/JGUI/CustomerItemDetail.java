@@ -4,7 +4,11 @@
  */
 package JGUI;
 
+import Item.Game;
 import Item.Item;
+import Item.Mobil;
+import Item.Motor;
+import Item.Movie;
 import User.Customer;
 import User.Owner;
 import java.awt.Image;
@@ -26,41 +30,39 @@ public class CustomerItemDetail extends NavigatableJFrame{
     public CustomerItemDetail() {
         initComponents();
         this.setTitle("Item Detail");
-        try{
-            iconLabel.setText("");
-            
-            BufferedImage img = null;
-            img = ImageIO. read(new File("DefaultItemImg.png"));
-            Image img1 = img.getScaledInstance (iconLabel.getPreferredSize().width, iconLabel.getPreferredSize().height, Image.SCALE_SMOOTH);
-            ImageIcon ic = new ImageIcon(img1);
-            
-            iconLabel.setIcon(ic);
-        }
-        catch(Exception e){
-            System.out.print(e.toString());
-        }
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     public CustomerItemDetail(Item item) {
         initComponents();
         this.item = item;
-        this.namaBarang.setText(item.getName());
+        String itemName = "";
+        System.out.println(item.getClass().toString());
+        switch (item.getClass().toString()){
+            case "class Item.Mobil":
+                // Do in case mobil
+                Mobil mobil = (Mobil) item;
+                itemName = mobil.getModel();
+                break;
+            case "class Item.Game":
+                // Do in case Game
+                Game game = (Game) item;
+                itemName = game.getTitle();
+                break;
+            case "class Item.Motor":
+                // Do in case Motor
+                Motor motor = (Motor) item;
+                itemName = motor.getModel();
+                break;
+            case "class Item.Movie":
+                // Do in case Movie
+                Movie movie = (Movie) item;
+                itemName = movie.getTitle();
+                break;
+        }
+        this.namaBarang.setText(itemName);
         this.labelDeskripsi.setText(item.getDescription());
         this.LabelBiaya.setText(String.valueOf(item.getRentalChargePerDay()));
         this.setTitle("Item Detail");
-        try{
-            iconLabel.setText("");
-            
-            BufferedImage img = null;
-            img = ImageIO. read(new File("DefaultItemImg.png"));
-            Image img1 = img.getScaledInstance (iconLabel.getPreferredSize().width, iconLabel.getPreferredSize().height, Image.SCALE_SMOOTH);
-            ImageIcon ic = new ImageIcon(img1);
-            
-            iconLabel.setIcon(ic);
-        }
-        catch(Exception e){
-            System.out.print(e.toString());
-        }
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -77,7 +79,6 @@ public class CustomerItemDetail extends NavigatableJFrame{
         LabelBiaya = new javax.swing.JLabel();
         labelDeskripsi = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        iconLabel = new javax.swing.JLabel();
         namaBarang = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,9 +109,6 @@ public class CustomerItemDetail extends NavigatableJFrame{
             }
         });
 
-        iconLabel.setText("jLabel1");
-        iconLabel.setPreferredSize(new java.awt.Dimension(90, 90));
-
         namaBarang.setText("nama barang");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,10 +133,8 @@ public class CustomerItemDetail extends NavigatableJFrame{
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(namaBarang)
-                            .addComponent(iconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(154, 154, 154))))
+                        .addComponent(namaBarang)
+                        .addGap(174, 174, 174))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +148,7 @@ public class CustomerItemDetail extends NavigatableJFrame{
                         .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
-                        .addGap(9, 9, 9)
-                        .addComponent(iconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(117, 117, 117)
                         .addComponent(namaBarang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ActionButton)))
@@ -166,7 +160,9 @@ public class CustomerItemDetail extends NavigatableJFrame{
     
     private void ActionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActionButtonActionPerformed
         // TODO add your handling code here:
-        if(this.ActionButton.getText() == "Return"){
+        if(this.ActionButton.getText().equals("Return")){
+            
+        }else{
             
         }
         this.dispose();
@@ -186,7 +182,7 @@ public class CustomerItemDetail extends NavigatableJFrame{
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         CustomerMainView mainView = (CustomerMainView) prevFrame;
-        Customer account = (Customer) mainView.getAccount();
+        Customer account = (Customer) Application.Application.getAccount();
         ArrayList<Item> rentedItems = (ArrayList<Item>)account.getRentedItem();
         
         //tempdata
@@ -236,7 +232,6 @@ public class CustomerItemDetail extends NavigatableJFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActionButton;
     private javax.swing.JLabel LabelBiaya;
-    private javax.swing.JLabel iconLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel labelDeskripsi;
     private javax.swing.JLabel namaBarang;
