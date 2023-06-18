@@ -4,7 +4,7 @@
  */
 package JGUI;
 
-import Database.CustomerDAO;
+import Controller.CustomerMainController;
 import User.Customer;
 import User.User;
 
@@ -17,8 +17,8 @@ public class CustomerMainView extends NavigatableJFrame {
     /**
      * Creates new form OwnerMainView
      */
-    public CustomerMainView(User account) {
-        this.account = (Customer)account;
+    public CustomerMainView() {
+        this.account = (Customer)Application.Application.getAccount();
         initComponents();
         initAdjacentFrame();
         this.setLocationRelativeTo(null);
@@ -27,7 +27,9 @@ public class CustomerMainView extends NavigatableJFrame {
         
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
         // --> this.browseView2.getItemCollection().renderCollection( ArrayList<ItemPanel> );
-        
+        this.browseView2.getItemCollection().renderCollection(
+                CustomerMainController.generateRecomendationItem(this.maxItemShow)
+        );
     }
 
     /**
@@ -149,7 +151,7 @@ public class CustomerMainView extends NavigatableJFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerMainView(new Customer()).setVisible(true);
+                new CustomerMainView().setVisible(true);
                 
             }
         });
@@ -164,6 +166,7 @@ public class CustomerMainView extends NavigatableJFrame {
     // Frame declaration
     private CustomerManageView manageView;
     private TopUpView topUpView;
+    private int maxItemShow = 30;
 
     /**
      * @return the account

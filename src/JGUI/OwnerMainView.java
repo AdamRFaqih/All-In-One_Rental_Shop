@@ -17,7 +17,7 @@ public class OwnerMainView extends NavigatableJFrame {
      * Creates new form OwnerMainViwe
      * @param account
      */
-    public OwnerMainView(User account) {
+    public OwnerMainView() {
         this.account = (Owner) account;
         initComponents();
         initAdjacentFrame();
@@ -178,7 +178,7 @@ public class OwnerMainView extends NavigatableJFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OwnerMainView(new Owner()).setVisible(true);
+                new OwnerMainView().setVisible(true);
             }
         });
     }

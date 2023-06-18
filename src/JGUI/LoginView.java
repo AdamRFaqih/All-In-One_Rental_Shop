@@ -137,11 +137,11 @@ public class LoginView extends NavigatableJFrame {
         }
         System.out.println(account instanceof Customer);
         if(account instanceof Customer){
-            Application.Application.setMainMenu(new CustomerMainView(account));
+            Application.Application.setMainMenu(new CustomerMainView());
         }
         else if(account instanceof Owner){
             //menunggu punya kamal
-            Application.Application.setMainMenu(new OwnerMainView(account));
+            Application.Application.setMainMenu(new OwnerMainView());
         }
         
         Application.Application.getMainMenu().show();
