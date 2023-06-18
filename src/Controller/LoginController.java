@@ -64,13 +64,19 @@ public class LoginController {
         return owners;
     }
     public static User LoginUser(String username, String password){
-        Customer _user = getCustomers().stream()
+        Customer _userCustomer = getCustomers().stream()
                 .filter(user -> 
                         user.getUserName().equals(username) && 
                         user.getPassword().equals(password))
                 .findFirst().orElse(null);
-        if(_user == null){return null;}
-        return _user;
+        if (_userCustomer != null){return _userCustomer;}
+        Owner _userOwner = getOwners().stream()
+                .filter(user -> 
+                        user.getUserName().equals(username) && 
+                        user.getPassword().equals(password))
+                .findFirst().orElse(null);
+        if (_userOwner != null){return _userOwner;}
+        return null;
     }
     public static void customerRegister(String username, String password) throws SQLException{
         Customer customer = new Customer(); 
