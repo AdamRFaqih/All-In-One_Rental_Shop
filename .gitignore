@@ -27,7 +27,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-.idea/dataSources/5530698c-9ebb-4804-a0ba-9456c4799992/storage_v2/_src_/database/AIORentalShop.wW65uA/schema/information_schema.FNRwLQ.meta
-.idea/dataSources/5530698c-9ebb-4804-a0ba-9456c4799992/storage_v2/_src_/database/RentalShop.WnY5BQ/schema/information_schema.FNRwLQ.meta
-.idea/dataSources/5530698c-9ebb-4804-a0ba-9456c4799992/storage_v2/_src_/database/AIORentalShop.wW65uA/schema/information_schema.FNRwLQ.meta
-.idea/dataSources/5530698c-9ebb-4804-a0ba-9456c4799992/storage_v2/_src_/database/RentalShop.WnY5BQ/schema/information_schema.FNRwLQ.meta
+/build/

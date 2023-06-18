@@ -72,19 +72,19 @@ public class OwnerDAO implements InterfaceDAO<Owner> {
             String shopName = resultSet.getString("shop_name");
             String location = resultSet.getString("location");
             Array itemRented = resultSet.getArray("item_rented");
-            Integer[] item = (Integer[]) itemRented.getArray();
             List<Item> itemRent = new ArrayList<>();
-            int j = 0;
-            for (int i = 0; i < items.size(); i++){
-                if (items.get(i).getItemID() == item[j]){
-                    itemRent.add(items.get(i));
-                    j++;
+            if (itemRented != null){
+                Integer[] item = (Integer[]) itemRented.getArray();
+                for (int i = 0; i < item.length; i++){
+                    int idCari = item[i];
+                    Item itemToAdd = items.stream().filter(idItem -> idItem.getItemID() == idCari).findFirst().orElse(null);
+                    itemRent.add(itemToAdd);
                 }
             }
             Owner owner = new Owner(id, name, password, email,userType, shopName,location,itemRent);
             owners.add(owner);
         }
-        return null;
+        return owners;
     }
 
     @Override

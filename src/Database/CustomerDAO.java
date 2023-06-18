@@ -83,13 +83,13 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
             int numberBorrow = res.getInt("numberborrow");
             Array rented = res.getArray("rented_item");
             double balance = res.getDouble("balance");
-            Integer[] rent = (Integer[]) rented.getArray();
             List<Item> rentedItem = new ArrayList<>();
-            int j = 0;
-            for (int i = 0; i < items.size(); i++){
-                if (items.get(i).getItemID() == rent[j]){
-                    rentedItem.add(items.get(i));
-                    j++;
+            if (rented != null){
+                Integer[] rent = (Integer[]) rented.getArray();
+                for (int i = 0; i < rent.length; i++){
+                    int idCari = rent[i];
+                    Item itemToAdd = items.stream().filter(idItem -> idItem.getItemID() == idCari).findFirst().orElse(null);
+                    rentedItem.add(itemToAdd);
                 }
             }
             Customer customer = new Customer(id, name, email, password, userType, phone, address, rentedItem, loyalty, numberBorrow,balance);
