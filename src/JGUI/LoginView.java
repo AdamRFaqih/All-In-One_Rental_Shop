@@ -138,10 +138,16 @@ public class LoginView extends NavigatableJFrame {
         System.out.println(account instanceof Customer);
         if(account instanceof Customer){
             Application.Application.setMainMenu(new CustomerMainView());
+            System.out.println("kamu masuk sebagai customer");
         }
         else if(account instanceof Owner){
             //menunggu punya kamal
             Application.Application.setMainMenu(new OwnerMainView());
+            System.out.println("kamu masuk sebagai owner");
+        }else{
+            this.UserNameLabel.setText("UserName - USERNAME atau Password salah");
+            this.PasswordLabel.setText("password - USERNAME atau Password salah");
+            return;
         }
         
         Application.Application.getMainMenu().show();

@@ -4,6 +4,11 @@
  */
 package JGUI;
 
+import Controller.TopUpController;
+import User.Customer;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -31,20 +36,20 @@ public class TopUpView extends NavigatableJFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        ConfirmButton = new javax.swing.JButton();
+        Message = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Confirm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ConfirmButton.setText("Confirm");
+        ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ConfirmButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Masukan nominal TopUp anda:");
+        Message.setText("Masukan nominal TopUp anda:");
 
         jTextField1.setText("Rp.");
 
@@ -56,11 +61,11 @@ public class TopUpView extends NavigatableJFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(jButton1))
+                        .addComponent(ConfirmButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(Message)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
@@ -68,23 +73,31 @@ public class TopUpView extends NavigatableJFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addComponent(jLabel1)
+                .addComponent(Message)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(ConfirmButton)
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        // Dispose frame.
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
+        try {
+            // TODO add your handling code here:
+            TopUpController.addBalance((Customer)Application.Application.getAccount(), Double.valueOf(this.jTextField1.getText()));
+            // Dispose frame.
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(TopUpView.class.getName()).log(Level.SEVERE, null, ex);
+            this.Message.setText(this.Message.getText()+" TopUp Gagal, Coba Lagi!");
+            this.jTextField1.setText("");
+        }
+        Customer customer = (Customer) Application.Application.getAccount(); 
+        System.out.println(customer.getWallet());
+    }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,8 +136,8 @@ public class TopUpView extends NavigatableJFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton ConfirmButton;
+    private javax.swing.JLabel Message;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

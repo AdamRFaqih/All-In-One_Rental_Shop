@@ -69,7 +69,7 @@ public class LoginController {
                         user.getUserName().equals(username) && 
                         user.getPassword().equals(password))
                 .findFirst().orElse(null);
-        
+        if(_user == null){return null;}
         ArrayList<Item> rentedItem = new ArrayList<Item>();
         _user.setRentedItem(rentedItem);
         return _user;
