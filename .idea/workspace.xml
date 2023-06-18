@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1796ddd3-566c-4276-b257-3d67f5970e36" name="Changes" comment="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JGUI/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +116,7 @@
       <workItem from="1686150680385" duration="24013000" />
       <workItem from="1686292131623" duration="9624000" />
       <workItem from="1686575788784" duration="3690000" />
-      <workItem from="1687107239613" duration="2636000" />
+      <workItem from="1687107239613" duration="3118000" />
     </task>
     <task id="LOCAL-00001" summary="implement base class item, and user">
       <created>1681281411355</created>

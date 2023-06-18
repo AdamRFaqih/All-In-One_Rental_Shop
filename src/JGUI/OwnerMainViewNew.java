@@ -18,13 +18,14 @@ import java.util.List;
  * @author adamrafiffaqih
  */
 public class OwnerMainViewNew extends javax.swing.JFrame {
-    Owner owner;
+    private Owner owner;
     /**
      * Creates new form OwnerMainViewNew
      */
     public OwnerMainViewNew() {
         initComponents();
-        owner = ((Owner) Application.getAccount());
+        this.owner = (Owner) Application.getAccount();
+        setjList1();
     }
 
     /**
