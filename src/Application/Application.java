@@ -37,7 +37,7 @@ public class Application {
     //  menginisiasi program
     //  menjalankan program
     static JFrame mainMenu = new JFrame();
-    public static User Account = new Customer();
+    public static User Account = null;
     private static ArrayList<Owner> Owners = new ArrayList<Owner>();
     private static ArrayList<Customer> Customers = new ArrayList<Customer>();
     
