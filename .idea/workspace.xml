@@ -5,14 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1796ddd3-566c-4276-b257-3d67f5970e36" name="Changes" comment="all DAO DONE, database DONE, waiting for testing and bug report when  combined with GUI + controller">
-      <change afterPath="$PROJECT_DIR$/src/JGUI/AddGame.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JGUI/AddGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JGUI/AddMobil.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JGUI/AddMobil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JGUI/AddMovie.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JGUI/AddMovie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JGUI/EditGame.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JGUI/EditGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JGUI/EditMobil.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JGUI/EditMobil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JGUI/EditMovie.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JGUI/EditMovie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AddItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JGUI/AddMotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/AddMotor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JGUI/CustomerItemDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/CustomerItemDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/JGUI/EditMotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/EditMotor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JGUI/OwnerMainViewNew.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +130,7 @@
       <workItem from="1686292131623" duration="9624000" />
       <workItem from="1686575788784" duration="3690000" />
       <workItem from="1687107239613" duration="3118000" />
+      <workItem from="1687150821069" duration="3077000" />
     </task>
     <task id="LOCAL-00001" summary="implement base class item, and user">
       <created>1681281411355</created>

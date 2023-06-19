@@ -9,9 +9,7 @@ import Item.Item;
 import Item.Mobil;
 import Item.Motor;
 import Item.Movie;
-import User.Customer;
 import User.Owner;
-import java.util.ArrayList;
 
 /**
  *

@@ -4,18 +4,11 @@
  */
 package JGUI;
 
-import Application.Application;
-import Controller.AddItemController;
 import Controller.EditItemController;
-import Controller.OwnerController;
 import Item.*;
-import User.Customer;
 import User.Owner;
 
-import java.lang.module.ModuleReader;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
