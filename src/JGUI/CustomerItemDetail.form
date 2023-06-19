@@ -133,12 +133,12 @@
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="StartDateChooser">
       <Events>
-        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="StartDateChooserInputMethodTextChanged"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="StartDateChooserFocusLost"/>
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="EndDateChooser">
       <Events>
-        <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="EndDateChooserInputMethodTextChanged"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="EndDateChooserFocusLost"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelBiaya1">

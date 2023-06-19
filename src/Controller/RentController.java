@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Database.CustomerDAO;
 import Item.Item;
 import User.Customer;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
  * @author rahma
  */
 public class RentController {
-    public static boolean rent(Customer Account, Item item, Date startDate, Date endDate){
+    public static boolean rent(Customer Account, Item item, Date startDate, Date endDate) throws SQLException{
         boolean isAccountValid = false;
         boolean isItemValid = false;
         
@@ -33,10 +34,14 @@ public class RentController {
         
         if(isAccountValid && isItemValid){
             Account.setWallet(Account.getWallet() - item.getRentalChargePerDay());
+            item.setAvailbility(false);
             Account.getRentedItem().add(item);
+            
+            System.out.println("Rent berhasil");
             return true;
         }
         else{
+            System.out.println("Rent Gagal "+isAccountValid+BrowseController.SearchItem(item));
             return false;
         }
     }

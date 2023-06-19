@@ -5,12 +5,17 @@
 package JGUI;
 
 import Controller.RentController;
+import Database.CustomerDAO;
 import Item.Game;
 import Item.Item;
 import Item.Mobil;
 import Item.Motor;
 import Item.Movie;
 import User.Customer;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,7 +61,7 @@ public class CustomerItemDetail extends NavigatableJFrame{
         
         this.namaBarang.setText(itemName);
         this.labelDeskripsi.setText(item.getDescription());
-        this.TotalPaymentLabel.setText(String.valueOf(item.getRentalChargePerDay()));
+        this.LabelBiaya1.setText(LabelBiaya1.getText()+String.valueOf(item.getRentalChargePerDay()));
         this.setTitle("Item Detail");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
@@ -103,19 +108,15 @@ public class CustomerItemDetail extends NavigatableJFrame{
 
         namaBarang.setText("nama barang");
 
-        StartDateChooser.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                StartDateChooserInputMethodTextChanged(evt);
+        StartDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                StartDateChooserFocusLost(evt);
             }
         });
 
-        EndDateChooser.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                EndDateChooserInputMethodTextChanged(evt);
+        EndDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                EndDateChooserFocusLost(evt);
             }
         });
 
@@ -198,10 +199,16 @@ public class CustomerItemDetail extends NavigatableJFrame{
             this.dispose();
             Application.Application.getMainMenu().show();
         }else if (this.ActionButton.getText().equals("Rent Item")){
-            RentController.rent(Account, item, this.StartDateChooser.getDate(), this.EndDateChooser.getDate());
+            try {
+                RentController.rent(Account, item, this.StartDateChooser.getDate(), this.EndDateChooser.getDate());
+                new CustomerDAO().updateData(Account);
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerItemDetail.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        System.out.println(Account.getRentedItem().size());
         this.dispose();
-
+        
     }//GEN-LAST:event_ActionButtonActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -225,15 +232,15 @@ public class CustomerItemDetail extends NavigatableJFrame{
         
     }//GEN-LAST:event_formWindowActivated
 
-    private void StartDateChooserInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_StartDateChooserInputMethodTextChanged
+    private void StartDateChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_StartDateChooserFocusLost
         // TODO add your handling code here:
         refresh();
-    }//GEN-LAST:event_StartDateChooserInputMethodTextChanged
+    }//GEN-LAST:event_StartDateChooserFocusLost
 
-    private void EndDateChooserInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_EndDateChooserInputMethodTextChanged
+    private void EndDateChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EndDateChooserFocusLost
         // TODO add your handling code here:
         refresh();
-    }//GEN-LAST:event_EndDateChooserInputMethodTextChanged
+    }//GEN-LAST:event_EndDateChooserFocusLost
     public void refresh(){
         this.DaysLabel.setText("" + RentController.GenerateDayOfRent(this.StartDateChooser.getDate(), this.EndDateChooser.getDate()));
         this.TotalPaymentLabel.setText("" + RentController.GenerateTotalPayment(this.item, Integer.valueOf(this.DaysLabel.getText())));
