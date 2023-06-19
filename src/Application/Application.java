@@ -5,8 +5,6 @@
 package Application;
 
 import Controller.LoginController;
-import Item.Mobil;
-import Item.Motor;
 import JGUI.LoginView;
 import User.Customer;
 import User.Owner;

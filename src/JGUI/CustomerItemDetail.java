@@ -11,6 +11,7 @@ import Item.Item;
 import Item.Mobil;
 import Item.Motor;
 import Item.Movie;
+import User.Owner;
 import User.Customer;
 import java.sql.SQLException;
 import java.util.Date;

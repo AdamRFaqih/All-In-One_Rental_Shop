@@ -4,18 +4,11 @@
  */
 package JGUI;
 
-import Application.Application;
-import Controller.AddItemController;
 import Controller.EditItemController;
-import Controller.OwnerController;
 import Item.*;
-import User.Customer;
 import User.Owner;
 
-import java.lang.module.ModuleReader;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -165,7 +158,8 @@ public class EditMotor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int idMotor = motor.getItemID();
-        Item motor = new Motor(idMotor, "Motor", jTextField2.getText(), Double.parseDouble(jTextField5.getText()), true, jTextField1.getText(), jTextField4.getText(), Integer.parseInt(jTextField3.getText()));
+        boolean avail = motor.isAvailbility();
+        Item motor = new Motor(idMotor, "Motor", jTextField2.getText(), Double.parseDouble(jTextField5.getText()), avail, jTextField1.getText(), jTextField4.getText(), Integer.parseInt(jTextField3.getText()));
         try {
             editItemController.updateEditedItem(motor);
         }catch (SQLException e){

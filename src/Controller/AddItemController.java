@@ -1,9 +1,7 @@
 package Controller;
 
-import Application.Application;
 import Database.*;
 import Item.*;
-import User.Customer;
 import User.Owner;
 
 import java.sql.SQLException;
