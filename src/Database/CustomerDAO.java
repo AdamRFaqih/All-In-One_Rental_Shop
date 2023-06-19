@@ -15,7 +15,7 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
     }
 
     @Override
-    public void createData(Customer customer) throws SQLException{
+    public int createData(Customer customer) throws SQLException{
         String userInsertQuery = "INSERT INTO users (username, password, email, user_type) VALUES (?, ?, ?, ?)";
         String customerInsertQuery = "INSERT INTO customers (user_id, phonenumber, address, loyaltytype, numberborrow, balance, rented_item) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -59,8 +59,7 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
         }
 
         // Close the prepared statements and result set
-        userInsertStatement.close();
-        generatedKeys.close();
+        return generatedKeys.getInt(1);
     }
 
     @Override
