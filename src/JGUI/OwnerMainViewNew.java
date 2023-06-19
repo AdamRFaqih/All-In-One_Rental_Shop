@@ -4,16 +4,12 @@
  */
 package JGUI;
 
-import Application.Application;
-import Controller.EditItemController;
 import Controller.OwnerController;
 import Item.*;
-import User.Customer;
 import User.Owner;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 /**
  *
@@ -57,6 +53,7 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jTextField1 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +103,13 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
 
         jTextField1.setToolTipText("");
 
+        jButton4.setText("Accept Return");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +136,10 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
                                         .addComponent(jButton3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton2))
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jButton4)))))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +171,9 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3)
                             .addComponent(jButton2))
-                        .addGap(39, 39, 39))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)
+                        .addGap(10, 10, 10))))
         );
 
         pack();
@@ -172,14 +181,17 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (jRadioButton1.isSelected()){
-            //ToMovie
+            AddMovie addMovie = new AddMovie();
+            addMovie.setVisible(true);
         } else if (jRadioButton2.isSelected()) {
             AddMotor addMotor = new AddMotor();
             addMotor.setVisible(true);
         } else if (jRadioButton3.isSelected()) {
-            //ToGame
+            AddGame addGame = new AddGame();
+            addGame.setVisible(true);
         } else if (jRadioButton4.isSelected()) {
-            //ToMobil
+            AddMobil addMobil = new AddMobil();
+            addMobil.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -198,14 +210,15 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
             if (ownerController.validateItemExist(owner, Integer.parseInt(jTextField1.getText()))){
                 Item item = ownerController.searchItem(owner, Integer.parseInt(jTextField1.getText()));
                 if (item instanceof Game){
-                    //ToGame
+                    EditGame editGame = new EditGame(owner, ((Game) item));
+                    editGame.setVisible(true);
                 } else if (item instanceof Motor) {
                     EditMotor editMotor = new EditMotor(owner, ((Motor) item));
                     editMotor.setVisible(true);
                 } else if (item instanceof Mobil) {
                     //ToMobil
                 } else if (item instanceof Movie) {
-                    //ToMovie
+                    new EditMovie(owner, ((Movie) item)).setVisible(true);
                 }
             }else {
                 JOptionPane.showMessageDialog(null, "Item not found.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -215,6 +228,27 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (!jTextField1.getText().equals("")){
+            if (ownerController.validateItemExist(owner, Integer.parseInt(jTextField1.getText()))){
+                if (ownerController.checkItemIsBorrowed(owner, Integer.parseInt(jTextField1.getText()))){
+                    try{
+                        ownerController.setAvailbility(owner, Integer.parseInt(jTextField1.getText()));
+                        ownerController.returnITem(owner, Integer.parseInt(jTextField1.getText()));
+                    }catch (SQLException e){
+                        System.out.println(e.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Item not yet borrowed.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else {
+                JOptionPane.showMessageDialog(null, "Item not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }else {
+            JOptionPane.showMessageDialog(null, "Text box cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +290,7 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;

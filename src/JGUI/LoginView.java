@@ -89,10 +89,10 @@ public class LoginView extends NavigatableJFrame {
                                 .addComponent(jButton2)
                                 .addGap(136, 136, 136)
                                 .addComponent(jButton3))
-                            .addComponent(LoginButton)
                             .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PasswordLabel)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LoginButton)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(message)))
@@ -157,7 +157,7 @@ public class LoginView extends NavigatableJFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         try{
-            LoginController.customerRegister(username.getText(), password.getText());
+            LoginController.ownerRegister(username.getText(), password.getText());
             message.setText("Register Success, you can login here");
             resetField();
         } catch (Exception e){

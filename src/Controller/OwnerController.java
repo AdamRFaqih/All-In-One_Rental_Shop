@@ -1,9 +1,10 @@
 package Controller;
 
 import Application.Application;
-import Database.OwnerDAO;
+import Database.*;
 import Item.*;
 import JGUI.OwnerMainViewNew;
+import User.Customer;
 import User.Owner;
 
 import javax.swing.*;
@@ -56,5 +57,36 @@ public class OwnerController {
     public Item searchItem(Owner owner, int id){
         List<Item> items = owner.getItemRented();
         return items.stream().filter(itemId -> itemId.getItemID() == id).findFirst().orElse(null);
+    }
+
+    public boolean checkItemIsBorrowed(Owner owner, int id){
+        List<Item> items = owner.getItemRented();
+        Item item = items.stream().filter(itemId -> itemId.getItemID() == id).findFirst().orElse(null);
+        if (!item.isAvailbility()){
+            return true;
+        }
+        return false;
+    }
+
+    public void setAvailbility(Owner owner, int id) throws SQLException {
+        List<Item> items = owner.getItemRented();
+        Item item = items.stream().filter(itemId -> itemId.getItemID() == id).findFirst().orElse(null);
+        item.setAvailbility(true);
+        if (item instanceof Game){
+            new GameDAO().updateData(((Game) item));
+        } else if (item instanceof Movie) {
+            new MovieDAO().updateData(((Movie) item));
+        } else if (item instanceof Motor) {
+            new MotorDAO().updateData(((Motor) item));
+        } else if (item instanceof Mobil) {
+            new MobilDAO().updateData(((Mobil) item));
+        }
+    }
+
+    public void returnITem(Owner owner, int id) throws SQLException{
+        Customer customer= new  CustomerDAO().readData().stream().filter(customer1 -> customer1.getRentedItem().stream().filter(item -> item.getItemID() == id).findFirst().orElse(null) != null).findFirst().orElse(null);
+        Item item = customer.getRentedItem().stream().filter(item1 -> item1.getItemID() == id).findFirst().orElse(null);
+        customer.getRentedItem().remove(item);
+        new CustomerDAO().updateData(customer);
     }
 }

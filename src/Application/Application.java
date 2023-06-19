@@ -5,8 +5,6 @@
 package Application;
 
 import Controller.LoginController;
-import Item.Mobil;
-import Item.Motor;
 import JGUI.LoginView;
 import User.Customer;
 import User.Owner;
@@ -75,4 +73,5 @@ public class Application {
     public static User getAccount() {
         return Account;
     }
+    public static int maxItemShow = 30;
 }
