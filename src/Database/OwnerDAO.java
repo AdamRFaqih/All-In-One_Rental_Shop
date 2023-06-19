@@ -16,7 +16,7 @@ public class OwnerDAO implements InterfaceDAO<Owner> {
     }
 
     @Override
-    public void createData(Owner object) throws SQLException{
+    public int createData(Owner object) throws SQLException{
         String userInsertQuery = "INSERT INTO users (username, password, email, user_type) VALUES (?, ?, ?, ?)";
         String ownerInsertQuery = "INSERT INTO rental_owners (user_id, shop_name, location, item_rented) VALUES (?, ?, ?, ?)";
 
@@ -53,6 +53,7 @@ public class OwnerDAO implements InterfaceDAO<Owner> {
         } else {
             throw new SQLException("Failed to create a owner account.");
         }
+        return generatedKeys.getInt(1);
     }
 
     @Override

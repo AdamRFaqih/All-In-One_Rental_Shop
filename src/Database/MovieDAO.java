@@ -1,6 +1,5 @@
 package Database;
 
-import Item.Motor;
 import Item.Movie;
 
 import java.sql.Connection;
@@ -19,7 +18,7 @@ public class MovieDAO implements InterfaceDAO<Movie> {
     }
 
     @Override
-    public void createData(Movie object) throws SQLException {
+    public int createData(Movie object) throws SQLException {
         String itemsQuery = "INSERT INTO items (name, description, rental_charge_per_day, availability) VALUES (?, ?, ?, ?)";
         String movieQuery = "INSERT INTO movie_items (item_id, title, genre, release_year, director, condition) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -51,6 +50,7 @@ public class MovieDAO implements InterfaceDAO<Movie> {
         } else {
             throw new SQLException("Failed to create a item.");
         }
+        return generatedKeys.getInt(1);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package Database;
 
-import Item.Game;
 import Item.Mobil;
 
 import java.sql.Connection;
@@ -20,7 +19,7 @@ public class MobilDAO implements InterfaceDAO<Mobil> {
     }
 
     @Override
-    public void createData(Mobil object) throws SQLException {
+    public int createData(Mobil object) throws SQLException {
         String itemsQuery = "INSERT INTO items (name, description, rental_charge_per_day, availability) VALUES (?, ?, ?, ?)";
         String carQuery = "INSERT INTO car_items (item_id, manufacturer, model, production_year, fuel_type) VALUES (?, ?, ?, ?, ?)";
 
@@ -52,6 +51,7 @@ public class MobilDAO implements InterfaceDAO<Mobil> {
         } else {
             throw new SQLException("Failed to create a item.");
         }
+        return generatedKeys.getInt(1);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package Database;
 
-import Item.Mobil;
 import Item.Motor;
 
 import java.sql.Connection;
@@ -19,7 +18,7 @@ public class MotorDAO implements InterfaceDAO<Motor> {
     }
 
     @Override
-    public void createData(Motor object) throws SQLException {
+    public int createData(Motor object) throws SQLException {
         String itemsQuery = "INSERT INTO items (name, description, rental_charge_per_day, availability) VALUES (?, ?, ?, ?)";
         String motorQuery = "INSERT INTO motorcycle_items (item_id, manufacturer, model, production_year) VALUES (?, ?, ?, ?)";
 
@@ -50,6 +49,7 @@ public class MotorDAO implements InterfaceDAO<Motor> {
         } else {
             throw new SQLException("Failed to create a item.");
         }
+        return generatedKeys.getInt(1);
     }
 
     @Override
