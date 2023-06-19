@@ -4,14 +4,18 @@
  */
 package JGUI;
 
+import Controller.RentController;
+import Database.CustomerDAO;
 import Item.Game;
 import Item.Item;
 import Item.Mobil;
 import Item.Motor;
 import Item.Movie;
 import User.Customer;
-import User.Owner;
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -54,9 +58,10 @@ public class CustomerItemDetail extends NavigatableJFrame{
                 itemName = movie.getTitle();
                 break;
         }
+        
         this.namaBarang.setText(itemName);
         this.labelDeskripsi.setText(item.getDescription());
-        this.LabelBiaya.setText(String.valueOf(item.getRentalChargePerDay()));
+        this.LabelBiaya1.setText(LabelBiaya1.getText()+String.valueOf(item.getRentalChargePerDay()));
         this.setTitle("Item Detail");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
@@ -71,10 +76,14 @@ public class CustomerItemDetail extends NavigatableJFrame{
     private void initComponents() {
 
         ActionButton = new javax.swing.JButton();
-        LabelBiaya = new javax.swing.JLabel();
+        TotalPaymentLabel = new javax.swing.JLabel();
         labelDeskripsi = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         namaBarang = new javax.swing.JLabel();
+        StartDateChooser = new com.toedter.calendar.JDateChooser();
+        EndDateChooser = new com.toedter.calendar.JDateChooser();
+        LabelBiaya1 = new javax.swing.JLabel();
+        DaysLabel = new javax.swing.JLabel();
+        ToLable = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,61 +102,91 @@ public class CustomerItemDetail extends NavigatableJFrame{
             }
         });
 
-        LabelBiaya.setText("Rent: Rp. /day");
+        TotalPaymentLabel.setText("Total payment:");
 
         labelDeskripsi.setText("Deskripsi:");
 
-        jButton2.setText("X");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        namaBarang.setText("nama barang");
+
+        StartDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                StartDateChooserFocusLost(evt);
             }
         });
 
-        namaBarang.setText("nama barang");
+        EndDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                EndDateChooserFocusLost(evt);
+            }
+        });
+
+        LabelBiaya1.setText("Rent: Rp. /day");
+
+        DaysLabel.setText("Days:");
+
+        ToLable.setText("To:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(165, 165, 165)
+                .addComponent(namaBarang)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelDeskripsi)
+                        .addComponent(LabelBiaya1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(LabelBiaya)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                        .addComponent(ActionButton)
-                        .addGap(30, 30, 30))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labelDeskripsi)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(namaBarang)
-                        .addGap(174, 174, 174))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(TotalPaymentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(StartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ToLable)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EndDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(DaysLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ActionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(labelDeskripsi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addComponent(LabelBiaya)
-                        .addGap(22, 22, 22))
+                        .addGap(40, 40, 40)
+                        .addComponent(namaBarang))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(117, 117, 117)
-                        .addComponent(namaBarang)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ActionButton)))
-                .addGap(15, 15, 15))
+                        .addGap(71, 71, 71)
+                        .addComponent(labelDeskripsi)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EndDateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(LabelBiaya1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(StartDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ToLable)
+                                .addGap(2, 2, 2))))
+                    .addComponent(DaysLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ActionButton)
+                    .addComponent(TotalPaymentLabel))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -155,19 +194,22 @@ public class CustomerItemDetail extends NavigatableJFrame{
     
     private void ActionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActionButtonActionPerformed
         // TODO add your handling code here:
-        if(this.ActionButton.getText().equals("Return")){
-            
-        }else{
-            
+        Customer Account = (Customer) Application.Application.getAccount();
+        if(this.ActionButton.getText().equals("Ok")){
+            this.dispose();
+            Application.Application.getMainMenu().show();
+        }else if (this.ActionButton.getText().equals("Rent Item")){
+            try {
+                RentController.rent(Account, item, this.StartDateChooser.getDate(), this.EndDateChooser.getDate());
+                new CustomerDAO().updateData(Account);
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerItemDetail.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        System.out.println(Account.getRentedItem().size());
         this.dispose();
-
+        
     }//GEN-LAST:event_ActionButtonActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -176,20 +218,33 @@ public class CustomerItemDetail extends NavigatableJFrame{
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        
+        System.out.println(this.item.getItemID());
         //tempdata
-        for (Owner owner : Application.Application.getOwners()){
-            if(owner.getItemRented().stream().filter(o -> o.getItemID() == this.item.getItemID()).findFirst().orElse(null) != null ){
-                this.ActionButton.setText("Return");
-                System.out.println("you have this item");
-            }else{
-                this.ActionButton.setText("Rent Item");
-                System.out.println("you don't have this item");
-            }
+        Customer account = (Customer) Application.Application.getAccount();
+        if(account.getRentedItem().stream().filter(o -> o.getItemID()== this.item.getItemID()).findFirst().orElse(null) != null ){
+            this.ActionButton.setText("Ok");
+            System.out.println("you have this item");
+        }else{
+            this.ActionButton.setText("Rent Item");
+            System.out.println("you don't have this item");
         }
+        
         
     }//GEN-LAST:event_formWindowActivated
 
+    private void StartDateChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_StartDateChooserFocusLost
+        // TODO add your handling code here:
+        refresh();
+    }//GEN-LAST:event_StartDateChooserFocusLost
+
+    private void EndDateChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EndDateChooserFocusLost
+        // TODO add your handling code here:
+        refresh();
+    }//GEN-LAST:event_EndDateChooserFocusLost
+    public void refresh(){
+        this.DaysLabel.setText("" + RentController.GenerateDayOfRent(this.StartDateChooser.getDate(), this.EndDateChooser.getDate()));
+        this.TotalPaymentLabel.setText("" + RentController.GenerateTotalPayment(this.item, Integer.valueOf(this.DaysLabel.getText())));
+    }
     /**
      * @param args the command line arguments
      */
@@ -227,8 +282,12 @@ public class CustomerItemDetail extends NavigatableJFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ActionButton;
-    private javax.swing.JLabel LabelBiaya;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel DaysLabel;
+    private com.toedter.calendar.JDateChooser EndDateChooser;
+    private javax.swing.JLabel LabelBiaya1;
+    private com.toedter.calendar.JDateChooser StartDateChooser;
+    private javax.swing.JLabel ToLable;
+    private javax.swing.JLabel TotalPaymentLabel;
     private javax.swing.JLabel labelDeskripsi;
     private javax.swing.JLabel namaBarang;
     // End of variables declaration//GEN-END:variables

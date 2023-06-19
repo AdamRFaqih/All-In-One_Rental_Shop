@@ -74,7 +74,7 @@ public class ItemCollection extends javax.swing.JPanel {
                         itemName = movie.getTitle();
                         break;
                 }
-            
+
             CustomerItemDetail tempDetail = new CustomerItemDetail(item);
             ItemPanel tempPanel = new ItemPanel();
             tempPanel.setItemName(itemName);

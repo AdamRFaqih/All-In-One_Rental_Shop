@@ -27,7 +27,7 @@ public class CustomerMainView extends NavigatableJFrame {
         
         // call ItemCollection.renderCollection( ) with list of item panel as the parameter!
         // --> this.browseView2.getItemCollection().renderCollection( ArrayList<ItemPanel> );
-        this.browseView2.showRecomendationItem(this.maxItemShow);
+        this.browseView2.showRecomendationItem(Application.Application.maxItemShow);
     }
 
     /**
@@ -165,7 +165,6 @@ public class CustomerMainView extends NavigatableJFrame {
     // Frame declaration
     private CustomerManageView manageView;
     private TopUpView topUpView;
-    private int maxItemShow = 30;
 
     /**
      * @return the account

@@ -34,10 +34,10 @@
                               <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="LoginButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="password" alignment="0" min="-2" pref="337" max="-2" attributes="0"/>
                           <Component id="PasswordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="username" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
+                          <Component id="LoginButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">

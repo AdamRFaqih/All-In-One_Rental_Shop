@@ -75,4 +75,5 @@ public class Application {
     public static User getAccount() {
         return Account;
     }
+    public static int maxItemShow = 30;
 }

@@ -76,9 +76,9 @@ public abstract class Item {
         TransactionDAO transactionDAO = new TransactionDAO();
         return transactionDAO.readData().stream().filter(transaction -> 
                 transaction.getItemId() == this.itemID &&
-                transaction.getStartDate().after(endDate) || 
-                transaction.getEndDate().before(startDate))
-                .findFirst().orElse(null) != null;
+                transaction.getStartDate().before(endDate) || 
+                transaction.getEndDate().after(startDate))
+                .findFirst().orElse(null) == null;
     }
 
     public void setAvailbility(boolean availbility) {
