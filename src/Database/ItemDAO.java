@@ -17,7 +17,7 @@ public class ItemDAO implements InterfaceDAO<Item> {
     }
 
     @Override
-    public void createData(Item object) throws SQLException {
+    public int createData(Item object) throws SQLException {
         throw new RuntimeException("Method Not Used");
     }
 

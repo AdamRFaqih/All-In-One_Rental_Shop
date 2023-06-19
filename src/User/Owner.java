@@ -26,7 +26,7 @@ public class Owner extends User {
         this.itemRented = itemRented;
     }
 
-    public Owner(int userID, String name, String email, String password, String tipe, String shopName, String location, List<Item> itemRented) {
+    public Owner(int userID, String name, String password, String email, String tipe, String shopName, String location, List<Item> itemRented) {
         super(userID, name, email, password, tipe);
         this.shopName = shopName;
         this.location = location;

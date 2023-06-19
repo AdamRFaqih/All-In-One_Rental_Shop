@@ -143,7 +143,7 @@ public class LoginView extends NavigatableJFrame {
         }
         else if(account instanceof Owner){
             //menunggu punya kamal
-            Application.Application.setMainMenu(new OwnerMainView());
+            Application.Application.setMainMenu(new OwnerMainViewNew());
             System.out.println("kamu masuk sebagai owner");
         }else{
             this.UserNameLabel.setText("UserName - USERNAME atau Password salah");

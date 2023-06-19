@@ -1,7 +1,6 @@
 package Database;
 
 import Item.Game;
-import Item.Item;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class GameDAO implements InterfaceDAO<Game> {
     }
 
     @Override
-    public void createData(Game object) throws SQLException {
+    public int createData(Game object) throws SQLException {
         String itemsQuery = "INSERT INTO items (name, description, rental_charge_per_day, availability) VALUES (?, ?, ?, ?)";
         String gameQuery = "INSERT INTO game_items (item_id, title, genre, publisher, condition) VALUES (?, ?, ?, ?, ?)";
 
@@ -46,6 +45,7 @@ public class GameDAO implements InterfaceDAO<Game> {
         } else {
             throw new SQLException("Failed to create a item.");
         }
+        return generatedKeys.getInt(1);
     }
 
     @Override

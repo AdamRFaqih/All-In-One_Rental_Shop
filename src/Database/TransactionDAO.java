@@ -15,9 +15,9 @@ public class TransactionDAO implements InterfaceDAO<Transaction> {
     }
 
     @Override
-    public void createData(Transaction object) throws SQLException {
+    public int createData(Transaction object) throws SQLException {
         String createQuery = "INSERT INTO transactions (customer_id, item_id, rental_start_date, rental_end_date, actual_return_date, rental_fee) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement insertStatement = connection.prepareStatement(createQuery);
+        PreparedStatement insertStatement = connection.prepareStatement(createQuery, PreparedStatement.RETURN_GENERATED_KEYS);
         insertStatement.setInt(1, object.getCustId());
         insertStatement.setInt(2, object.getItemId());
         insertStatement.setDate(3, (Date) object.getStartDate());
@@ -26,6 +26,8 @@ public class TransactionDAO implements InterfaceDAO<Transaction> {
         insertStatement.setDouble(6, object.getRentalFee());
         insertStatement.executeUpdate();
         connection.commit();
+        ResultSet resultSet = insertStatement.getGeneratedKeys();
+        return resultSet.getInt(1);
 
     }
 
