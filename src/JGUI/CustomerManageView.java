@@ -60,6 +60,9 @@ public class CustomerManageView extends NavigatableJFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -106,6 +109,11 @@ public class CustomerManageView extends NavigatableJFrame {
         // TODO add your handling code here:
         prevFrame.show();
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        this.refresh();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
