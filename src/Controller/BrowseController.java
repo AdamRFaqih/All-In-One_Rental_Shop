@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Database.OwnerDAO;
 import Item.*;
 import User.Owner;
 import java.sql.SQLException;
@@ -33,9 +34,15 @@ public class BrowseController {
         }
         return items;
     }
-    public static boolean SearchItem(Item item){
-        for (Owner owner : Application.Application.getOwners()){
-            return owner.getItemRented().stream().filter(checkItem -> checkItem.getItemID() == item.getItemID()).findFirst().orElse(null) != null;
+    public static boolean SearchItem(Item item) throws SQLException{
+        OwnerDAO ownerDAO = new OwnerDAO();
+        ArrayList<Owner> owners = (ArrayList<Owner>) ownerDAO.readData();
+        for (Owner owner : owners){
+            for (Item itemI : owner.getItemRented()){
+                if (itemI.getItemID() == item.getItemID()){
+                    return true;
+                }
+            }
         }
         return false;
     }
