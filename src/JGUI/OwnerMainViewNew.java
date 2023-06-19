@@ -172,14 +172,17 @@ public class OwnerMainViewNew extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (jRadioButton1.isSelected()){
-            //ToMovie
+            AddMovie addMovie = new AddMovie();
+            addMovie.setVisible(true);
         } else if (jRadioButton2.isSelected()) {
             AddMotor addMotor = new AddMotor();
             addMotor.setVisible(true);
         } else if (jRadioButton3.isSelected()) {
-            //ToGame
+            AddGame addGame = new AddGame();
+            addGame.setVisible(true);
         } else if (jRadioButton4.isSelected()) {
-            //ToMobil
+            AddMobil addMobil = new AddMobil();
+            addMobil.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
